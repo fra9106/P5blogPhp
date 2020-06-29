@@ -1,8 +1,9 @@
 <?php
-//On inclut le fichier dont on a besoin (ici à la racine de notre site)
-require 'Database.php';
-//Ne pas oublier d'ajouter le fichier Article.php
-require 'Article.php';
+
+require '../vendor/autoload.php';
+
+use App\src\DAO\ArticleDAO;
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -16,7 +17,7 @@ require 'Article.php';
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
-    $articles = new Article();
+    $articles = new ArticleDAO();
     $article = $articles->getArticles();
     while($articles = $article->fetch())
     {
