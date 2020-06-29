@@ -1,11 +1,4 @@
-<?php
 
-require '../vendor/autoload.php';
-
-
-use App\src\DAO\ArticleDAO;
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,17 +11,16 @@ use App\src\DAO\ArticleDAO;
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
-    $articles = new ArticleDAO();
-    $article = $articles->getArticles();
-    while($articles = $article->fetch())
+    
+    while($article = $articles->fetch())
     {
         ?>
         <div>
-            <h2><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($articles->id);?>"><?= htmlspecialchars($articles->title);?></a></h2>
-            <p><?= htmlspecialchars($articles->mini_content);?></p>
-            <p><?= htmlspecialchars($articles->content);?></p>
-            <p><?= htmlspecialchars($articles->pseudo);?></p>
-            <p>Créé le : <?= htmlspecialchars($articles->creation_date_fr);?></p>
+            <h2><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->id);?>"><?= htmlspecialchars($article->title);?></a></h2>
+            <p><?= htmlspecialchars($article->mini_content);?></p>
+            <p><?= htmlspecialchars($article->content);?></p>
+            <p><?= htmlspecialchars($article->pseudo);?></p>
+            <p>Créé le : <?= htmlspecialchars($article->creation_date_fr);?></p>
         </div>
         <br>
         <?php
