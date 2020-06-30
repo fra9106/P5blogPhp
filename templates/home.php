@@ -1,13 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <title>Mon blog</title>
-</head>
-
-<body>
-<div>
+<?php $this->title = "Accueil"; ?>
     <h1>Mon blog</h1>
     <p>En construction</p>
     <?php
@@ -26,8 +18,5 @@
         <br>
         <?php
     }
-    $articles->closeCursor();
+    
     ?>
-</div>
-</body>
-</html>
