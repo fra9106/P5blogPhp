@@ -6,7 +6,7 @@
     <?php
     
     foreach($articles as $article)
-    {var_dump($article);
+    {//var_dump($article);
         ?>
         <div>
             <h2><a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->GetTitle());?></a></h2>

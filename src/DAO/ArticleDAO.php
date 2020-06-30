@@ -1,6 +1,8 @@
 <?php
 
 namespace App\src\DAO;
+
+use App\config\Parameter;
 use App\src\model\Article;
 
 
@@ -43,10 +45,10 @@ class ArticleDAO extends DAO
     
     }
 
-    public function addArticle($article)
+    public function addArticle(Parameter $post)
     {
-        extract($article);
+        
         $sql = 'INSERT INTO articles(title, mini_content, content, creation_date) VALUES (?, ?, ?, NOW())';
-        $this->createQuery($sql, [$title, $mini_content, $content]);
+        $this->createQuery($sql, [$post->get('title'), $post->get('mini_content'), $post->get('content')]);
     }
 }
