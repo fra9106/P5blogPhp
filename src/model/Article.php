@@ -49,7 +49,7 @@ class Article
     
     public function setMiniContent($mini_content)
     {
-        $this->mini_content = $mini_content ;
+        $this->mini_content = $mini_content;
     }
 
     
