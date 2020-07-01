@@ -22,7 +22,10 @@ class Router
     }
 
     public function run()
-    {
+    { 
+        //$this->request->getSession()->set('test', 'value');
+        //var_dump($this->request->getSession()->get('test'));
+
         $route = $this->request->getGet()->get('route');
         try{
             if(isset($route))
@@ -32,6 +35,12 @@ class Router
                 }
                 elseif ($route === 'addArticle'){
                     $this->backController->addArticle($this->request->getPost());
+                }
+                elseif ($route === 'legalPage'){
+                    $this->frontController->legalPage();
+                }
+                elseif ($route === 'articlesList'){
+                    $this->frontController->articlesList();
                 }
                 else{
                     $this->errorController->errorNotFound();

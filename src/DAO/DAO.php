@@ -46,12 +46,10 @@ class DAO
         if($parameters)
         {
             $result = $this->checkConnect()->prepare($sql);
-            //$result->setFetchMode(PDO::FETCH_CLASS, static::class);
             $result->execute($parameters);
             return $result;
         }
         $result = $this->checkConnect()->query($sql);
-        //$result->setFetchMode(PDO::FETCH_CLASS, static::class);
         return $result;
     }
 }

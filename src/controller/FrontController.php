@@ -6,8 +6,14 @@ class FrontController extends Controller
 {
     public function home()
     {
+        require('../templates/home.php');
+        
+    }
+
+    public function articlesList()
+    {
         $articles = $this->articleDAO->getArticles();
-        return $this->view->render('home', [
+        return $this->view->render('articlesList', [
            'articles' => $articles
         ]);
     }
@@ -21,4 +27,9 @@ class FrontController extends Controller
             'comments' => $comments
         ]);
     }
+
+    public function legalPage()
+	{
+		require('../templates/legalNotice.php');
+	}
 }
