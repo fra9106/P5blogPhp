@@ -10,12 +10,12 @@
     {//var_dump($article);
         ?>
         <div>
-            <h2><a href="index.php?route=article&articleId=<?= $article->getId();?>"><?= $article->GetTitle();?></a></h2>
-            <p><?= $article->getMiniContent(); ?></p>
-            <p><?= $article->getContent();?></p>
-            <p><?= $article->getPseudo();?></p>
-            <p>Créé le : <?= $article->getCreationDate();?></p>
-            <p>Modifié le : <?= $article->getUpdateDate();?></p>
+            <h2><a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->GetTitle());?></a></h2>
+            <p><?= htmlspecialchars($article->getMiniContent());?></p>
+            <p><?= htmlspecialchars($article->getContent());?></p>
+            <p><?= htmlspecialchars($article->getPseudo());?></p>
+            <p>Créé le : <?= htmlspecialchars($article->getCreationDate());?></p>
+            <p>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></p>
         </div>
         <br>
         <?php
