@@ -1,3 +1,6 @@
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9d6bf6d2c30e4886817aac3e8a353cd2)](https://app.codacy.com/manual/fra9106/P5blogPhp?utm_source=github.com&utm_medium=referral&utm_content=fra9106/P5blogPhp&utm_campaign=Badge_Grade_Settings)
+
 Projet 5 Openclassrooms PHP/SYMFONY
 
 This five OpenClassrooms project is the creation of a blog in PHP programmed in object oriented and in MVC architecture.
