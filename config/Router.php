@@ -23,9 +23,6 @@ class Router
 
     public function run()
     { 
-        //$this->request->getSession()->set('test', 'value');
-        //var_dump($this->request->getSession()->get('test'));
-
         $route = $this->request->getGet()->get('route');
         try{
             if(isset($route))

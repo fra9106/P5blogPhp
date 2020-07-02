@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>mentions légales et </title>
-    <meta name="robots" content="noindex">
-
-    <meta charset="UTF-8">
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf " crossorigin="anonymous">
-    <link rel="stylesheet" href="../publics/css/style.css">
-    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-</head>
-
-<body>
-    <div class="container">
+<?php $this->title = "Mentions légales"; ?><br><br><br>
+<div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-6"><br>
                 <div class="card  mb-4">
@@ -57,6 +40,3 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>

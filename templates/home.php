@@ -1,4 +1,4 @@
-<?php ob_start(); ?>
+<?php $this->title = "Home"; ?>
 <header class=" masthead bg-primary slider text-white text-center">
     <div class="container align-items-center ">
         <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2>
@@ -68,5 +68,5 @@
         <script src="public/js/app.js "></script>
     </div>
 </section>
-<?php $content = ob_get_clean(); ?>
-<?php require('base.php'); ?>
+
+

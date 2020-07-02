@@ -6,8 +6,7 @@ class FrontController extends Controller
 {
     public function home()
     {
-        require('../templates/home.php');
-        
+        return $this->view->render('home');
     }
 
     public function articlesList()
@@ -30,6 +29,6 @@ class FrontController extends Controller
 
     public function legalPage()
 	{
-		require('../templates/legalNotice.php');
+        return $this->view->render('legalNotice');
 	}
 }
