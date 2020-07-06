@@ -37,9 +37,10 @@ class BackController extends Controller
         ]);
     }
 
-    public function confirmDeleteArticle(Parameter $post, $articleId)
+    public function confirmDeleteArticle($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
+        
         return $this->view->render('confirmDeleteArticle', [
             'article' => $article
         ]);
