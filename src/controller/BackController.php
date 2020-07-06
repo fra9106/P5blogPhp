@@ -12,7 +12,6 @@ class BackController extends Controller
             $this->articleDAO->addArticle($post);
             $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
             header('Location:../index.php?route=articlesList');
-            exit;
         }
         return $this->view->render('add_article', [
             'post' => $post
@@ -32,7 +31,6 @@ class BackController extends Controller
             $this->articleDAO->articleEditAdmin($post, $articleId);
             $this->session->set('articlesListAdmin', 'Article modifié !');
             header('Location:index.php?route=articlesListAdmin');
-            exit;
         }    
         return $this->view->render('edit_ArticleAdmin', [
             'article' => $article
