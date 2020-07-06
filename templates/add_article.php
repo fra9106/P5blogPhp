@@ -1,10 +1,9 @@
-<?php $this->title = "Nouvel article"; ?>
-<h1>Mon blog</h1>
-<p>En construction</p>
+<?php $this->title = "Nouvel article"; ?><br><br>
 
 <div class="articlewrite">
     <h2>Bonjour</h2>
-    <h3><a href="index.php?action=homePage">Accueil</a></h3>
+    <h3><a href="index.php?route=home">Accueil</a></h3>
+    <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
     <br />
     <h1>Rédaction Articles : </h1>
     <div class="row">
@@ -26,7 +25,7 @@
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <textarea class="mytextarea  formcont mt-0 mb-0" name="content" rows="5" cols="50" placeholder="Votre message"></textarea>
                     </div>
-                 <input class="btn btn-success mt-4" type="submit" value="Envoyer" id="submit" name="submit">
+                 <input class="btn btn-success mt-4" type="submit" value="Envoyer" id="submit" name="submit"><br><br>
                
             </form>
         </div>

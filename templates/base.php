@@ -25,7 +25,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?route=articlesList&amp;">Articles</a>
+                    <a class="nav-link" href="index.php?route=articlesList">Articles</a>
                 </li>
 
                 <li class="nav-item">
@@ -94,7 +94,7 @@
                 <div class="container mt-4 mb-4">
                     <small>Copyright &copy; monpersoweb.fr 2020 | <a href="index.php?route=legalPage">Mentions légales
         
-                        </a><a class="open text-center" href="index.php?action=writeArticleDisplay">| Administation</a></small>
+                        </a><a class="open text-center" href="index.php?route=addArticle">| Administation</a></small>
                 </div>
         
             </div>

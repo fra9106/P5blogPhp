@@ -33,6 +33,12 @@ class Router
                 elseif ($route === 'addArticle'){
                     $this->backController->addArticle($this->request->getPost());
                 }
+                elseif ($route === 'articlesListAdmin'){
+                    $this->backController->articlesListAdmin();
+                }
+                elseif ($route === 'editArticleAdmin'){
+                    $this->backController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
+                }
                 elseif ($route === 'legalPage'){
                     $this->frontController->legalPage();
                 }
