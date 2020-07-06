@@ -14,7 +14,9 @@
                     <p class="card-text"><?= htmlspecialchars($article->getContent());?></p></p>
                     <small class="text-muted"><em><?= htmlspecialchars($article->getPseudo());?></em></small><br>
                     <small class="text-muted"><em>Crée le : <?= htmlspecialchars($article->getCreationDate());?></em></small><br>
+                    <?php if ($article->getUpdateDate()) :?>
                     <small class="text-muted"><em>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></em></small>
+                    <?php endif ?>
                 </div>
             </div>
         </div>

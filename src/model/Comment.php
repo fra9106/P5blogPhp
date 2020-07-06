@@ -4,7 +4,7 @@ namespace App\src\model;
 
 class Comment
 {
-    private $id;
+    private $id_comment;
     private $pseudo;
     private $content;
     private $creation_date_fr;
@@ -12,13 +12,13 @@ class Comment
     
     public function getId()
     {
-        return $this->id;
+        return $this->id_comment;
     }
 
     
-    public function setId($id)
+    public function setId($id_comment)
     {
-        $this->id = $id;
+        $this->id_comment = $id_comment;
     }
 
     

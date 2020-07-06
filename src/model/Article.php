@@ -5,7 +5,7 @@ namespace App\src\model;
 class Article
 {
     
-    private $id;
+    private $id_article;
     private $pseudo;
     private $mini_content;
     private $title;
@@ -16,13 +16,13 @@ class Article
     
     public function getId()
     {
-        return $this->id;
+        return $this->id_article;
     }
 
     
-    public function setId($id)
+    public function setId($id_article)
     {
-        $this->id = $id;
+        $this->id_article = $id_article;
     }
 
     public function getPseudo()
