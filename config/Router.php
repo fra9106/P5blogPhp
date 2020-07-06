@@ -42,6 +42,9 @@ class Router
                 elseif ($route === 'legalPage'){
                     $this->frontController->legalPage();
                 }
+                elseif ($route === 'confirmDeleteArticle'){
+                    $this->backController->confirmDeleteArticle($this->request->getPost(),$this->request->getGet()->get('articleId'));
+                }
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
                 }

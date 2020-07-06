@@ -1,3 +1,4 @@
+<?php $this->title = "Liste des articles Admin"; ?>
 <div class="articlewrite">
     <br>
     
@@ -40,7 +41,7 @@
                     <a href="index.php?action=validArticle&amp;id={{article.id}}"><button type="button" class="btn btn-success">Valider</button></a>
                 </td>-->
                 <td>
-                    <a href="index.php?action=confirmdeletearticle&amp;id={{article.id}}"><button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button></a>
+                    <a href="index.php?route=confirmDeleteArticle&articleId=<?= $article->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button></a>
                 </td>
             </tr>
             <?php
