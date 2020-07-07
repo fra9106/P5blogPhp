@@ -10,7 +10,7 @@
     <div class="container mt-4">
         <h1>Articles :</h1><br>
         <p><?= $this->session->show('articlesListAdmin'); ?></p>
-        <?= $this->session->show('delete_articleAdmin'); ?>
+        <p><?= $this->session->show('delete_articleAdmin'); ?></p>
         <br><br>
         <table class="table table-striped">
             <thead>

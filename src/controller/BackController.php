@@ -10,8 +10,8 @@ class BackController extends Controller
     {
         if($post->get('submit')) {
             $this->articleDAO->addArticle($post);
-            $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
-            header('Location:../index.php?route=articlesList');
+            $this->session->set('add_article', 'Nouvel article ajouté');
+            header('Location:../index.php?route=articlesListAdmin');
         }
         return $this->view->render('add_article', [
             'post' => $post
@@ -49,7 +49,10 @@ class BackController extends Controller
     {
         $this->articleDAO->deleteArticle($articleId);
         $this->session->set('delete_articleAdmin', 'Article supprimé');
-        header('Location:index.php?route=articlesListAdmin');
+        $articles = $this->articleDAO->getArticles();
+        return $this->view->render('articlesListAdmin', [
+           'articles' => $articles
+        ]);
     }
 
 }
