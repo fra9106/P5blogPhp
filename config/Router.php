@@ -57,6 +57,12 @@ class Router
                 elseif ($route === 'confirmDeleteArticle'){
                     $this->backController->confirmDeleteArticle($this->request->getGet()->get('articleId'));
                 }
+                elseif ($route === 'confirmDeleteComment'){
+                    $this->backController->confirmDeleteComment($this->request->getGet()->get('commentId'));
+                }
+                elseif ($route === 'deleteCommentAdmin'){
+                    $this->backController->deleteCommentAdmin($this->request->getGet()->get('commentId'));
+                }
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
                 }

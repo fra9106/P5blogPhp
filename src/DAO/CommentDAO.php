@@ -56,4 +56,19 @@ class CommentDAO extends DAO
         $result->closeCursor();
         return $comments; 
     }
+
+    public function getComment($commentId)
+    {
+        $sql ='SELECT comments.id, users.pseudo, comments.content, comments.valid, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments INNER JOIN users ON comments.id_user = users.id WHERE comments.id = ?';
+        $result = $this->createQuery($sql, [$commentId]);
+        $comment = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($comment);
+    }
+
+    public function deleteComment($commentId)
+    {
+        $sql = 'DELETE FROM comments WHERE id = ?';
+        $this->createQuery($sql, [$commentId]);
+    }
 }
