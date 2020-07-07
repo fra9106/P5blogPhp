@@ -40,10 +40,16 @@ class BackController extends Controller
     public function confirmDeleteArticle($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
-        
         return $this->view->render('confirmDeleteArticle', [
             'article' => $article
         ]);
+    }
+
+    public function deleteArticleAdmin($articleId)
+    {
+        $this->articleDAO->deleteArticle($articleId);
+        $this->session->set('delete_articleAdmin', 'Article supprimé');
+        header('Location:index.php?route=articlesListAdmin');
     }
 
 }

@@ -39,6 +39,9 @@ class Router
                 elseif ($route === 'editArticleAdmin'){
                     $this->backController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
                 }
+                elseif ( $route === 'deleteArticleAdmin'){
+                    $this->backController->deleteArticleAdmin($this->request->getGet()->get('articleId'));
+                }
                 elseif ($route === 'legalPage'){
                     $this->frontController->legalPage();
                 }
