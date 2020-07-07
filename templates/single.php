@@ -1,30 +1,71 @@
-<?php $this->title = "Article"; ?>
-    <h1>Mon blog</h1>
-    <p>En construction</p>
-    
-    <div>
-        <h2><?= htmlspecialchars($article->getTitle());?></h2>
-        <p><?= htmlspecialchars($article->getMiniContent());?></p>
-        <p><?= htmlspecialchars($article->getContent());?></p>
-        <p><?= htmlspecialchars($article->getPseudo());?></p>
-        <p>Créé le : <?= htmlspecialchars($article->getCreationDate());?></p>
-        <p>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></p>
+<div class="jumbotron text-center"><br><br>
+    <h1>
+    <?= htmlspecialchars($article->getTitle());?>
+    </h1>
+</div>
+<div class="container">
+    <div class="row justify-content-center text-center">
+        <div class="col-6"><br>
+            <div class=" card mb-4">
+                <div class="card-body">
+                    <strong>Chapô :</strong><br><br>
+                    <p class="card-text"><?= htmlspecialchars($article->getMiniContent());?></p>
+                    <strong>Contenu : </strong><br><br>
+                    <p class="card-text"><?= htmlspecialchars($article->getContent());?></p></p>
+                    <small class="text-muted"><em><?= htmlspecialchars($article->getPseudo());?></em></small><br>
+                    <small class="text-muted"><em>Crée le : <?= htmlspecialchars($article->getCreationDate());?></em></small><br>
+                    <?php if ($article->getUpdateDate()) :?>
+                    <small class="text-muted"><em>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></em></small>
+                    <?php endif ?>
+                </div>
+            </div>
+        </div>
     </div>
-    <br>
-   
-    <a href="index.php">Retour à l'accueil</a>
+</div>
+<div class="container">
+<div class="row justify-content-center text-center">
+    <div class="encart">
+        <br />
+    
+        <h2>Mon commentaire :</h2>
+        
+        <div class="container">
+            <form action="index.php?action=addComment&amp;id=<?= htmlspecialchars($article->getId());?>" method="post">
+                <div class='form-group '>
+                    <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-success mb-4">J'envoie mon commentaire !</button><br>
+                </div>
+            </form>
+        </div>
+        
+        <h3 class="error">Pour l'ajout d'un commentaire, veuillez vous connecter !</h3>
 
-    <div id="comments" class="text-left" style="margin-left: 50px">
-        <h3>Commentaires</h3>
-        <?php
+        <div class="container">
+            <h2>Vos commentaires :</h2>
+            <div class="row justify-content-center text-center">
+            <?php
         foreach ($comments as $comment)
         {
             ?>
             
-            <h4><?= htmlspecialchars($comment->getPseudo());?></h4>
-            <p><?= htmlspecialchars($comment->getContent());?></p>
-            <p>Posté le <?= htmlspecialchars($comment->getCreationDate());?></p>
-            <?php
+                <div class="col-6"><br>
+                    <div class=" card mb-4">
+                        <div class="card-body">
+                            <p><em>Envoyé le : <?= htmlspecialchars($comment->getCreationDate());?></em></p>
+                            <p class="card-text"><?= htmlspecialchars($comment->getContent());?></p>
+                            </p>
+                            <p class="card-text"><em>De la part de : <?= htmlspecialchars($comment->getPseudo());?></em></p>
+                        </div>
+                    </div>
+                </div>
+
+             <?php
         }
         ?>
+            </div>
+        </div>
     </div>
+</div>
+</div><br>

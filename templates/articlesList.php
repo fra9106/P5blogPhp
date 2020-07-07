@@ -1,24 +1,34 @@
 <?php $this->title = "Liste des articles"; ?>
 <br><br><br><br>
-    <h1>Mon blog</h1>
-    <p>En construction</p>
-    <?= $this->session->show('add_article'); ?>
-    <a href="index.php?route=addArticle">Nouvel article</a>
-    <?php
     
+    <div class="container">
+    <h1>Mes articles</h1><br>
+    <p><?= $this->session->show('add_article'); ?></p>
+    <div class="row flex">
+    <?php
     foreach($articles as $article)
     {//var_dump($article);
         ?>
-        <div>
-            <h2><a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->GetTitle());?></a></h2>
-            <p><?= htmlspecialchars($article->getMiniContent());?></p>
-            <p><?= htmlspecialchars($article->getContent());?></p>
-            <p><?= htmlspecialchars($article->getPseudo());?></p>
-            <p>Créé le : <?= htmlspecialchars($article->getCreationDate());?></p>
-            <p>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></p>
+        <div class="col-sm-12 col-md-6 col-lg-3"><br>
+                <div class="card  mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                        <?= htmlspecialchars($article->GetTitle());?>
+                        </h5>
+                        <p class="card-text"><?= htmlspecialchars($article->getMiniContent());?></p>
+                        <small class="text-muted"><em>De la part de : <?= htmlspecialchars($article->getPseudo());?></p></em></small><br>
+                        <small class="text-muted"><em>Crée le : <?= htmlspecialchars($article->getCreationDate());?></em></small><br><br>
+                        <?php if ($article->getUpdateDate()) :?>
+                        <small class="text-muted"><em>Modifié le : <?= htmlspecialchars($article->getUpdateDate());?></p></em></small><br>
+                        <?php endif ?>
+                        <div class="btn-group center">
+                            <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><button type="button" class="btn btn-sm btn-outline-success">Lire la suite...</button></a>
+                        </div>
+                    </div>
+                </div>
         </div>
-        <br>
-        <?php
-    }
-    
+    <?php
+}
     ?>
+    </div>
+</div>
