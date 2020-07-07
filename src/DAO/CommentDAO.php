@@ -14,6 +14,7 @@ class CommentDAO extends DAO
         $comment->setId($row['id']);
         $comment->setPseudo($row['pseudo']);
         $comment->setContent($row['content']);
+        $comment->setValid($row['valid']);
         $comment->setCreationDate($row['comment_date_fr']);
         return $comment;
     }
@@ -35,5 +36,24 @@ class CommentDAO extends DAO
     {
         $sql = 'INSERT INTO comments(id_article, id_user, content, comment_date) VALUES( ?, ?, ?, NOW())';
         $this->createQuery($sql, [$articleId, $post->get('id_user'), $post->get('content')]);
+    }
+
+    public function validComment($commentId)
+    {
+        $sql = 'UPDATE comments SET valid = ? WHERE id = ?';
+        $this->createQuery($sql, [1, $commentId]);
+    }
+
+    public function getComments()
+    {
+        $sql = 'SELECT comments.id, users.pseudo, comments.content, comments.valid, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments INNER JOIN users ON comments.id_user = users.id  ORDER BY comment_date DESC';
+        $result = $this->createQuery($sql);
+        $comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['id'];
+            $comments[$commentId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $comments; 
     }
 }

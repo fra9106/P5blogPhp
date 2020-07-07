@@ -55,4 +55,21 @@ class BackController extends Controller
         ]);
     }
 
+    public function validComment($commentId)
+    {
+        $this->commentDAO->validComment($commentId);
+        $this->session->set('valid_comment', 'Commentaire validé !');
+        $comments = $this->commentDAO->getComments();
+        return $this->view->render('commentsListAdmin', [
+           'comments' => $comments
+        ]);
+    }
+
+    public function commentsListAdmin(){
+        $comments = $this->commentDAO->getComments();
+        return $this->view->render('commentsListAdmin', [
+           'comments' => $comments
+        ]);
+    }
+
 }

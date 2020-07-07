@@ -36,6 +36,12 @@ class Router
                 elseif ($route === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(),$this->request->getGet()->get('articleId'));
                 }
+                elseif ($route === 'commentsListAdmin'){
+                    $this->backController->commentsListAdmin();
+                }
+                elseif($route === 'validComment'){
+                    $this->backController->validComment($this->request->getGet()->get('commentId'));
+                }
                 elseif ($route === 'articlesListAdmin'){
                     $this->backController->articlesListAdmin();
                 }

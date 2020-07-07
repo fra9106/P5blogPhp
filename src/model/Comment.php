@@ -7,6 +7,7 @@ class Comment
     private $id_comment;
     private $pseudo;
     private $content;
+    private $valid;
     private $creation_date_fr;
 
     
@@ -43,6 +44,17 @@ class Comment
     public function setContent($content)
     {
         $this->content = $content;
+    }
+
+    public function getValid()
+    {
+        return $this->valid;
+    }
+
+   
+    public function setValid($valid)
+    {
+        $this->valid = $valid;
     }
 
     
