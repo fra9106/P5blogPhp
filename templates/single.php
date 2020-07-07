@@ -1,7 +1,9 @@
+<?php $this->title = "Article&commentaires"; ?>
 <div class="jumbotron text-center"><br><br>
     <h1>
     <?= htmlspecialchars($article->getTitle());?>
     </h1>
+    <p><?= $this->session->show('add_comment'); ?></p>
 </div>
 <div class="container">
     <div class="row justify-content-center text-center">
@@ -30,12 +32,14 @@
         <h2>Mon commentaire :</h2>
         
         <div class="container">
-            <form action="index.php?action=addComment&amp;id=<?= htmlspecialchars($article->getId());?>" method="post">
+            <form action="index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
+
+            <input type="int" id="id_user" name="id_user"><br>
                 <div class='form-group '>
                     <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-success mb-4">J'envoie mon commentaire !</button><br>
+                    <input type="submit" class="btn btn-success mb-4" value="J'envoie mon commentaire !" id="submit" name="submit">
                 </div>
             </form>
         </div>
