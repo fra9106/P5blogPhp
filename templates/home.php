@@ -2,6 +2,8 @@
 <header class=" masthead bg-primary slider text-white text-center">
     <div class="container align-items-center ">
         <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2>
+        <?= $this->session->show('login'); ?>
+        <?= $this->session->show('register'); ?>
         <h1 class=" nom reveal-name">Franck Boutot</h1>
         <div class="divider-custom divider-light ">
             <div class="divider-custom-icon">

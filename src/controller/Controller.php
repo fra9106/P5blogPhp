@@ -24,7 +24,7 @@ abstract class Controller
     {
         $this->articleDAO = new ArticleDAO();
         $this->commentDAO = new CommentDAO();
-        //$this->userDAO = new UserDAO();
+        $this->userDAO = new UserDAO();
         $this->view = new View();
         $this->request = new Request();
         $this->get = $this->request->getGet();
