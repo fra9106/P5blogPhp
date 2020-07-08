@@ -55,4 +55,42 @@ class BackController extends Controller
         ]);
     }
 
+    public function validComment($commentId)
+    {
+        $this->commentDAO->validComment($commentId);
+        $this->session->set('valid_comment', 'Commentaire validé !');
+        $comments = $this->commentDAO->getComments();
+        return $this->view->render('commentsListAdmin', [
+           'comments' => $comments
+        ]);
+    }
+
+    public function commentsListAdmin(){
+        $comments = $this->commentDAO->getComments();
+        return $this->view->render('commentsListAdmin', [
+           'comments' => $comments
+        ]);
+    }
+
+    public function confirmDeleteComment($commentId)
+    {
+        $comment = $this->commentDAO->getComment($commentId);
+        return $this->view->render('confirmDeleteComment', [
+            'comment' => $comment
+        ]);
+        
+    }
+
+    public function deleteCommentAdmin($commentId)
+    {
+        $this->commentDAO->deleteComment($commentId);
+        $this->session->set('delete_commentAdmin', 'Commentaire supprimé !');
+        $comments = $this->commentDAO->getComments();
+        return $this->view->render('commentsListAdmin', [
+           'comments' => $comments
+        ]);
+    }
+
+
+
 }

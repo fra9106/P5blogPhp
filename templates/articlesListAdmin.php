@@ -2,9 +2,8 @@
 <div class="articlewrite">
     <br>
     
-    <h3><a href="index.php?action=writeArticleDisplay">Accueil admin</a></h3>
-    <h3><a href="index.php?action=articlesListAdmin">Gestion des articles</a></h3>
-    <h3><a href="index.php?action=listCommentsAdmin">Gestion des commentaires</a></h3>
+    <h3><a href="index.php?route=addArticle">Accueil Admin</a></h3>
+    <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
     <h3><a href="index.php?action=listUsersAdmin">Gestion des membres</a></h3>
     <br>
     <div class="container mt-4">
@@ -38,9 +37,7 @@
                 <td>
                     <a href="index.php?route=editArticleAdmin&articleId=<?= $article->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-success">Modifier</button></a>
                 </td>
-                <!--<td>
-                    <a href="index.php?action=validArticle&amp;id={{article.id}}"><button type="button" class="btn btn-success">Valider</button></a>
-                </td>-->
+                
                 <td>
                     <a href="index.php?route=confirmDeleteArticle&articleId=<?= $article->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button></a>
                 </td>
