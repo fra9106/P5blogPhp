@@ -2,8 +2,8 @@
 
 <div class="articlewrite">
     <h2>Bonjour</h2>
-    <h3><a href="index.php?route=home">Accueil</a></h3>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
+    <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
     <br />
     <h1>Rédaction Articles : </h1>
     <div class="row">

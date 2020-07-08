@@ -48,4 +48,8 @@ class FrontController extends Controller
                 'post' => $post
             ]);
     }
+    public function register(Parameter $post)
+    {
+        return $this->view->render('register');
+    }
 }

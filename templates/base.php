@@ -34,25 +34,21 @@
 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=displFormulContact">Inscription</a>
+                    <a class="nav-link" href="index.php?route=register">Inscription</a>
                 </li>
                 
     
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=logout">Déconnexion</a>
+                    <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
                 </li>
             
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=displConnexion">Connexion</a>
+                    <a class="nav-link" href="index.php?route=login">Connexion</a>
                 </li>
                 
             </ul>
             <span class=" text-white"></span>
-        
-             <!--<img class=" reveal-dev pic " width="50" src="public/img/users/avatar" alt="photo utilisateur">-->
-        
             <img class=" reveal-dev pic " width="50" src="public/img/franck.jpg" alt="photo franck">
-    
         </div>
     </nav>
     <div id="content">
