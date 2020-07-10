@@ -36,7 +36,10 @@ class BackController extends Controller
         if($post->get('submit')){
             $this->articleDAO->articleEditAdmin($post, $articleId);
             $this->session->set('articlesListAdmin', 'Article modifié !');
-            return header('Location:index.php?route=articlesListAdmin');
+            $articles = $this->articleDAO->getArticles();
+            return $this->view->render('articlesListAdmin', [
+                'articles' => $articles
+            ]);
         }    
         return $this->view->render('edit_ArticleAdmin', [
             'article' => $article
