@@ -66,6 +66,12 @@ class Router
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
                 }
+                elseif($route === 'register'){
+                    $this->frontController->register($this->request->getPost());
+                }
+                elseif($route === 'login'){
+                    $this->frontController->login($this->request->getPost());
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

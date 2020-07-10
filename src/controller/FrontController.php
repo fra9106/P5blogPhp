@@ -48,4 +48,38 @@ class FrontController extends Controller
                 'post' => $post
             ]);
     }
+
+    public function register(Parameter $post)
+    {
+        if($post->get('submit')) {
+            $this->userDAO->register($post);
+            $this->session->set('register', 'Votre inscription a bien été effectuée');
+            return $this->view->render('home');
+            //header('Location: ../index.php?action=homePage');    
+        }
+        return $this->view->render('register');
+    }
+
+    public function login(Parameter $post)
+    {
+        if($post->get('submit')) {
+            $result = $this->userDAO->login($post);
+            if($result && $result['isPasswordValid']) {
+                $this->session->set('login', 'Content de vous revoir !');
+                $this->session->set('id', $result['result']['id']);
+                $this->session->set('pseudo', $post->get('pseudo'));
+                return $this->view->render('home');
+                //header('Location: ../index.php?action=homePage');
+            }
+            else {
+                $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
+                return $this->view->render('login', [
+                    'post'=> $post
+                ]);
+            }
+        }
+        return $this->view->render('login');
+    }
+
+
 }
