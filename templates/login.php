@@ -2,6 +2,7 @@
 <div class="register">
     <div class="container mt-4">
     <?= $this->session->show('error_login'); ?>
+    <?= $this->session->show('register'); ?>
         <form action="index.php?route=login" method="post">
             <div class="form-group">
                 <input type="text" placeholder="Pseudo" id="pseudo" required name="pseudo" class="form-control">

@@ -10,6 +10,7 @@
         <h1>Articles :</h1><br>
         <p><?= $this->session->show('articlesListAdmin'); ?></p>
         <p><?= $this->session->show('delete_articleAdmin'); ?></p>
+        <p><?= $this->session->show('add_article'); ?></p>
         <br><br>
         <table class="table table-striped">
             <thead>
