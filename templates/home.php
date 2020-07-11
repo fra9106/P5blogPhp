@@ -4,7 +4,7 @@
         <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2><br>
         <div class="reveal-fas" >
             <?= $this->session->get('login'); ?>
-            <?= $this->session->get('pseudo'); ?> !
+            <?= $this->session->get('pseudo'); ?>
         </div>
         <h1 class=" nom reveal-name">Franck Boutot</h1>
         <div class="divider-custom divider-light ">

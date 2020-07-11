@@ -6,8 +6,7 @@ use App\config\Parameter;
 use Exception;
 class FrontController extends Controller
 {
-    
-    public function home()
+   public function home()
     {
         return $this->view->render('home');
     }
@@ -95,6 +94,11 @@ class FrontController extends Controller
             }
         }
         return $this->view->render('login');
+    }
+
+    public function logout()
+    {
+        $this->session->stop();
     }
 
 
