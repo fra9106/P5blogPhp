@@ -101,7 +101,16 @@ class BackController extends Controller
         ]);
     }
 
-    
+    public function profile($userId)
+    {  
+        $userId=$this->session->get('id');
+        $user=$this->userssDAO->getUsersInfos($userId);
+
+        return $this->view->render('profile', [
+            'user' => $user
+        ]);
+    }
+
 
 
 }
