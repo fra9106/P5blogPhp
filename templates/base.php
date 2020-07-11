@@ -29,7 +29,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=diplayprofil&amp;">Profil</a>
+                    <a class="nav-link" href="index.php?route=profile">Profil</a>
                 </li>
 
                 </li>
@@ -47,7 +47,7 @@
                 </li>
                 
             </ul>
-            <span class=" text-white"></span>
+            <span class=" reveal-dev text-white"><?= $this->session->get('pseudo'); ?><br></span>
             <img class=" reveal-dev pic " width="50" src="public/img/franck.jpg" alt="photo franck">
         </div>
     </nav>

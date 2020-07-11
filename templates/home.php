@@ -2,7 +2,10 @@
 <header class=" masthead bg-primary slider text-white text-center">
     <div class="container align-items-center ">
         <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2><br>
-        <?= $this->session->show('login'); ?><br>
+        <div class="reveal-fas" >
+            <?= $this->session->get('login'); ?>
+            <?= $this->session->get('pseudo'); ?> !
+        </div>
         <h1 class=" nom reveal-name">Franck Boutot</h1>
         <div class="divider-custom divider-light ">
             <div class="divider-custom-icon">

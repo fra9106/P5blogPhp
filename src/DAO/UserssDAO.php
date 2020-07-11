@@ -20,13 +20,13 @@ class UserssDAO extends DAO
         $result = $this->createQuery($sql, [$post->get('mail')]);
         $isUnique = $result->fetchColumn();
         if($isUnique) {
-            return '<p>Oups ce mail existe déjà, merci d\'en choisir un autre...</p>';
+            return '<br><p>Oups... ce mail existe déjà, merci d\'en choisir un autre...</p>';
         }
     }
 
     public function login(Parameter $post)
     {
-        $sql = 'SELECT id, password FROM users WHERE pseudo = ?';
+        $sql = 'SELECT id, pass FROM users WHERE pseudo = ?';
         $data = $this->createQuery($sql, [$post->get('pseudo')]);
         $result = $data->fetch();
         $isPasswordValid = password_verify($post->get('pass'), $result['pass']);
