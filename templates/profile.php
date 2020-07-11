@@ -19,7 +19,7 @@
                         <strong>Mail : </strong><br>
                         <p class="card-text"><?= htmlspecialchars($user->getMail()); ?></p>
                         <strong>Inscrit depuis le : </strong><br>
-                        <p class="card-text"><?= htmlspecialchars($user->getCreateDate()); var_dump($user);?></p>
+                        <p class="card-text"><?= htmlspecialchars($user->getCreateDate());?></p>
                     </div>
                 </div>
             </div>
