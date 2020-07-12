@@ -3,7 +3,7 @@
 namespace App\src\controller;
 
 use App\config\Parameter;
-use Exception;
+
 class FrontController extends Controller
 {
    public function home()
@@ -83,8 +83,8 @@ class FrontController extends Controller
                 $this->session->set('login', 'Content de vous revoir ' );
                 $this->session->set('id', $result['result']['id']);
                 $this->session->set('pseudo', $post->get('pseudo'));
+                $this->session->set('droits', $result['result']['droits']);
                 return $this->view->render('home');
-    
             }
             else {
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
