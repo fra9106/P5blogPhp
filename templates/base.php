@@ -23,29 +23,26 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?action=homePage"><span><i class="fa fa-home"></i> Accueil</span></a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?route=articlesList">Articles</a>
                 </li>
-
+                <?php if ($this->session->get('pseudo')) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?route=profile">Profil</a>
                 </li>
-
+                <?php endif ?>
+                <?php if ($this->session->get('pseudo')) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
+                </li>
+                <?php else: ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=login">Connexion</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?route=register">Inscription</a>
                 </li>
-                
-    
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
-                </li>
-            
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?route=login">Connexion</a>
-                </li>
-                
+                <?php endif ?>
             </ul>
             <span class=" reveal-dev text-white"><?= $this->session->get('pseudo'); ?><br></span>
             <img class=" reveal-dev pic " width="50" src="public/img/franck.jpg" alt="photo franck">
@@ -88,11 +85,11 @@
                     </p>
                 </div>
                 <div class="container mt-4 mb-4">
-                    <small>Copyright &copy; monpersoweb.fr 2020 | <a href="index.php?route=legalPage">Mentions légales
-        
-                        </a><a class="open text-center" href="index.php?route=addArticle">| Administation</a></small>
+                    <small>Copyright &copy; monpersoweb.fr 2020 | <a href="index.php?route=legalPage">Mentions légales</a>
+                    <?php if($this->session->get('droits') === '1') : ?>
+                        <a class="open text-center" href="index.php?route=addArticle">| Administation</a></small>
                 </div>
-        
+                <?php endif ?>
             </div>
         </div>
     </footer>

@@ -3,7 +3,7 @@
 namespace App\src\controller;
 
 use App\config\Parameter;
-use Exception;
+
 class FrontController extends Controller
 {
    public function home()
@@ -34,15 +34,15 @@ class FrontController extends Controller
         return $this->view->render('legalNotice');
     }
     
-    public function addComment(Parameter $post, $articleId)
+    public function addComment(Parameter $post, $sessId, $articleId)
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
             if(!$errors) {
-                $this->commentDAO->addComment($post, $articleId);
+                $sessId = $this->session->get('id');
+                $this->commentDAO->addComment($post, $sessId, $articleId);
                 $this->session->set('add_comment', 'Commentaire ajouté en attente de validation !');
             }
-            
             $article = $this->articleDAO->getArticle($articleId);
             $comments = $this->commentDAO->getCommentsArticle($articleId);
             return $this->view->render('single', [
@@ -83,8 +83,8 @@ class FrontController extends Controller
                 $this->session->set('login', 'Content de vous revoir ' );
                 $this->session->set('id', $result['result']['id']);
                 $this->session->set('pseudo', $post->get('pseudo'));
+                $this->session->set('droits', $result['result']['droits']);
                 return $this->view->render('home');
-    
             }
             else {
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');

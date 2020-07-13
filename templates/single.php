@@ -28,13 +28,11 @@
 <div class="row justify-content-center text-center">
     <div class="encart">
         <br />
-    
+        <?php if ($this->session->get('pseudo')) : ?>
         <h2>Mon commentaire :</h2>
-        
         <div class="container">
             <form action="index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
-
-            <input type="int" id="id_user" name="id_user"><br>
+            
                 <div class='form-group '>
                     <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
                     <?= isset($errors['content']) ? $errors['content'] : ''; ?>
@@ -44,9 +42,9 @@
                 </div>
             </form>
         </div>
-        
+        <?php else: ?>
         <h3 class="error">Pour l'ajout d'un commentaire, veuillez vous connecter !</h3>
-
+        <?php endif ?>
         <div class="container">
             <h2>Vos commentaires :</h2>
             <div class="row justify-content-center text-center">

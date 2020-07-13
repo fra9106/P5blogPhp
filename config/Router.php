@@ -4,6 +4,7 @@ namespace App\config;
 use App\src\controller\BackController;
 use App\src\controller\ErrorController;
 use App\src\controller\FrontController;
+
 use Exception;
 
 class Router
@@ -19,6 +20,7 @@ class Router
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
+        $this->session = $this->request->getSession();
     }
 
     public function run()
@@ -34,7 +36,7 @@ class Router
                     $this->backController->addArticle($this->request->getPost());
                 }
                 elseif ($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(),$this->request->getGet()->get('articleId'));
+                    $this->frontController->addComment($this->request->getPost(),$this ->session->get('id'), $this->request->getGet()->get('articleId'));
                 }
                 elseif ($route === 'commentsListAdmin'){
                     $this->backController->commentsListAdmin();
