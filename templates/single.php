@@ -32,7 +32,6 @@
         <h2>Mon commentaire :</h2>
         <div class="container">
             <form action="index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
-            
                 <div class='form-group '>
                     <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
                     <?= isset($errors['content']) ? $errors['content'] : ''; ?>
@@ -52,8 +51,7 @@
         foreach ($comments as $comment)
         {
             ?>
-            
-                <div class="col-6"><br>
+            <div class="col-6"><br>
                     <div class=" card mb-4">
                         <div class="card-body">
                             <p><em>Envoyé le : <?= htmlspecialchars($comment->getCreationDate());?></em></p>
@@ -63,10 +61,9 @@
                         </div>
                     </div>
                 </div>
-
-             <?php
-        }
-        ?>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
