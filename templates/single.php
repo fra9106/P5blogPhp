@@ -32,7 +32,7 @@
         <h2>Mon commentaire :</h2>
         <div class="container">
             <form action="index.php?route=addComment&articleId=<?= htmlspecialchars($article->getId());?>" method="post">
-            <input type="int" id="id_user" name="id_user"><br>
+            
                 <div class='form-group '>
                     <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
                     <?= isset($errors['content']) ? $errors['content'] : ''; ?>

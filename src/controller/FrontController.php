@@ -34,15 +34,15 @@ class FrontController extends Controller
         return $this->view->render('legalNotice');
     }
     
-    public function addComment(Parameter $post, $articleId)
+    public function addComment(Parameter $post, $sessId, $articleId)
     {
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
             if(!$errors) {
-                $this->commentDAO->addComment($post, $articleId);
+                $sessId = $this->session->get('id');
+                $this->commentDAO->addComment($post, $sessId, $articleId);
                 $this->session->set('add_comment', 'Commentaire ajouté en attente de validation !');
             }
-            
             $article = $this->articleDAO->getArticle($articleId);
             $comments = $this->commentDAO->getCommentsArticle($articleId);
             return $this->view->render('single', [
