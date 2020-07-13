@@ -3,7 +3,7 @@
 namespace App\src\controller;
 
 use App\config\Parameter;
-
+use Exception;
 class FrontController extends Controller
 {
     
@@ -41,8 +41,9 @@ class FrontController extends Controller
             $errors = $this->validation->validate($post, 'Comment');
             if(!$errors) {
                 $this->commentDAO->addComment($post, $articleId);
-                $this->session->set('add_comment', 'Commentaire ajouté');
+                $this->session->set('add_comment', 'Commentaire ajouté en attente de validation !');
             }
+            
             $article = $this->articleDAO->getArticle($articleId);
             $comments = $this->commentDAO->getCommentsArticle($articleId);
             return $this->view->render('single', [

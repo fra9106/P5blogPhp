@@ -37,6 +37,7 @@
             <input type="int" id="id_user" name="id_user"><br>
                 <div class='form-group '>
                     <textarea class="form-control" id="comment" name="content" placeholder="Votre texte"></textarea>
+                    <?= isset($errors['content']) ? $errors['content'] : ''; ?>
                 </div>
                 <div>
                     <input type="submit" class="btn btn-success mb-4" value="J'envoie mon commentaire !" id="submit" name="submit">
