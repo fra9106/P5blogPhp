@@ -94,6 +94,23 @@ class User
     }
 
     /**
+     * @return int 
+     */
+    public function getDroits()
+    {
+        return $this->droits;
+    }
+
+    /**
+     * @param int $droits
+     */
+    public function setDroits($droits)
+    {
+        $this->pass = $droits;
+    }
+
+
+    /**
      * @return \DateTime
      */
     public function getCreateDate()

@@ -6,8 +6,7 @@ use App\config\Parameter;
 use Exception;
 class FrontController extends Controller
 {
-    
-    public function home()
+   public function home()
     {
         return $this->view->render('home');
     }
@@ -60,7 +59,7 @@ class FrontController extends Controller
         if($post->get('submit')) {
             $errors = $this->validation->validate($post, 'User');
             if($this->userssDAO->checkUser($post)) {
-                $errors['pseudo'] = $this->userssDAO->checkUser($post);
+                $errors['mail'] = $this->userssDAO->checkUser($post);
             }
             if(!$errors) {
                 $this->userssDAO->register($post);
@@ -81,20 +80,25 @@ class FrontController extends Controller
         if($post->get('submit')) {
             $result = $this->userssDAO->login($post);
             if($result && $result['isPasswordValid']) {
-                $this->session->set('login', 'Content de vous revoir !');
+                $this->session->set('login', 'Content de vous revoir ' );
                 $this->session->set('id', $result['result']['id']);
                 $this->session->set('pseudo', $post->get('pseudo'));
                 return $this->view->render('home');
-                //header('Location:index.php');
+    
             }
             else {
-                $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
+                $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
                 return $this->view->render('login', [
                     'post'=> $post
                 ]);
             }
         }
         return $this->view->render('login');
+    }
+
+    public function logout()
+    {
+        $this->session->stop();
     }
 
 

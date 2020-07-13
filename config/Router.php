@@ -72,6 +72,12 @@ class Router
                 elseif($route === 'login'){
                     $this->frontController->login($this->request->getPost());
                 }
+                elseif($route === 'logout'){
+                    $this->frontController->logout();
+                }
+                elseif($route === 'profile'){
+                    $this->backController->profile($this->request->getGet()->get('userId'));
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }
