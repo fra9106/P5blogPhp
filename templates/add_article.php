@@ -1,7 +1,8 @@
 <?php $this->title = "Nouvel article"; ?><br><br>
 
 <div class="articlewrite">
-    <h2>Bonjour</h2>
+    <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
+    <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
     <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
     <br />

@@ -6,6 +6,11 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
+    public function administration()
+    {
+    return $this->view->render('administration');
+    }
+
     public function addArticle(Parameter $post)
     {
         if($post->get('submit')) {
@@ -22,6 +27,7 @@ class BackController extends Controller
         }
         return $this->view->render('add_article');
     }
+
     public function articlesListAdmin(){
         $articles = $this->articleDAO->getArticles();
         return $this->view->render('articlesListAdmin', [
@@ -110,7 +116,5 @@ class BackController extends Controller
             'user' => $user
         ]);
     }
-
-
 
 }
