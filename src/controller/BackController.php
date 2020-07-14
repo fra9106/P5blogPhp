@@ -11,7 +11,7 @@ class BackController extends Controller
         if($post->get('submit')) {
         $errors = $this->validation->validate($post, 'Article');
            if(!$errors) {
-                $this->articleDAO->addArticle($post);
+                $this->articleDAO->addArticle($post, $this->session->get('id'));
                 $this->session->set('add_article', 'Nouvel article ajouté !');
                 return header('Location:index.php?route=articlesListAdmin');
             }
