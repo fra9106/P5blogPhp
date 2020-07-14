@@ -6,40 +6,9 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
-    private function checkLog()
-    {
-        if(!$this->session->get('pseudo')) {
-            $this->session->set('need_login', 'Pour accéder à cette page, merci de vous connecter !');
-           return $this->view->render('login');
-        } else {
-            return true;
-        }
-    }
-
-    private function checkAdmin()
-    {
-        $this->checkLog();
-        if(!($this->session->get('droits') === '1')) {
-            $this->session->set('not_admin', '... mais vous n\'avez aucun droits adminstrateur pour accéder à cette page !');
-           header('Location:index.php?route=profile');
-        } else {
-            return true;
-        }
-    }
-
     public function administration()
     {
-        if($this->checkAdmin()) {
-            $articles = $this->articleDAO->getArticles();
-           
-            //$users = $this->userDAO->getUsers();
-
-            return $this->view->render('administration', [
-                'articles' => $articles
-               
-                //'users' => $users
-            ]);   
-        }
+    return $this->view->render('administration');
     }
 
     public function addArticle(Parameter $post)

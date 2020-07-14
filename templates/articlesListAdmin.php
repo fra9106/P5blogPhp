@@ -2,7 +2,8 @@
 <div class="articlewrite">
     <br>
     
-    <h3><a href="index.php?route=addArticle">Accueil Admin</a></h3>
+    <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
+    <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
     <h3><a href="index.php?action=listUsersAdmin">Gestion des membres</a></h3>
     <br>
