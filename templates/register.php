@@ -1,9 +1,10 @@
 <?php $this->title = "Inscription"; ?>
 <div class="register">
     <div class="container mt-4">
+    <?= $this->session->show('register'); ?>
         <form action="index.php?route=register" method="post">
             <div class="form-group">
-                <input type="text" placeholder="Pseudo" id="pseudo" value="<?= isset($post) ? htmlspecialchars($post->get('pseudo')): ''; ?> " required name="pseudo" class="form-control">
+                <input type="text" placeholder="Pseudo" id="pseudo" required name="pseudo" class="form-control">
                 <?= isset($errors['pseudo']) ? $errors['pseudo'] : ''; ?>
             </div>
             <div class="form-group">

@@ -57,7 +57,7 @@ class FrontController extends Controller
     public function register(Parameter $post)
     {
         if($post->get('submit')) {
-            $errors = $this->validation->validate($post, 'User');
+            $errors = $this->validation->validate($post,'User');
             if($this->userssDAO->checkUser($post)) {
                 $errors['mail'] = $this->userssDAO->checkUser($post);
             }
