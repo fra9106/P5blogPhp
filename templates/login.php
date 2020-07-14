@@ -1,7 +1,7 @@
 <?php $this->title = "Connexion"; ?>
 <div class="register">
     <div class="container mt-4">
-    <?= $this->session->show('error_login'); ?>
+    <h4 class="red"><?= $this->session->show('error_login'); ?></h4>
         <form action="index.php?route=login" method="post">
             <div class="form-group">
                 <input type="text"  id="pseudo" placeholder="Pseudo" value="<?= isset($post) ? htmlspecialchars($post->get('pseudo')): ''; ?>" required name="pseudo" class="form-control">

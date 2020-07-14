@@ -9,9 +9,9 @@
     <br>
     <div class="container mt-4">
         <h1>Articles :</h1><br>
-        <p><?= $this->session->show('articlesListAdmin'); ?></p>
-        <p><?= $this->session->show('delete_articleAdmin'); ?></p>
-        <p><?= $this->session->show('add_article'); ?></p>
+        <h4 class="red"><?= $this->session->show('articlesListAdmin'); ?></h4>
+        <h4 class="red"><?= $this->session->show('delete_articleAdmin'); ?></h4>
+        <h4 class="red"><?= $this->session->show('add_article'); ?></h4>
         <br><br>
         <table class="table table-striped">
             <thead>
@@ -32,7 +32,7 @@
             <tr>
                 <td><?= htmlspecialchars($article->getTitle());?></td>
                 <td><?= htmlspecialchars($article->getMiniContent());?></td>
-                <td><?= htmlspecialchars($article->getContent());?></td>
+                <td><?= $article->getContent();?></td>
                 <td><?= htmlspecialchars($article->getPseudo());?></td>
                 <td><?= htmlspecialchars($article->getCreationDate());?></td>
                 <td><?= htmlspecialchars($article->getUpdateDate());?></td>

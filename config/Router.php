@@ -37,7 +37,8 @@ class Router
                 elseif ($route === 'addArticle'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->addArticle($this->request->getPost());
                     }
                 }
@@ -47,34 +48,39 @@ class Router
                 elseif ($route === 'commentsListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->commentsListAdmin();
                     }
                 }
                 elseif($route === 'validComment'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->validComment($this->request->getGet()->get('commentId'));
                     }
                 }
                 elseif ($route === 'articlesListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->articlesListAdmin();}
                 }
                 elseif ($route === 'editArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
                     }
                 }
                 elseif ( $route === 'deleteArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->deleteArticleAdmin($this->request->getGet()->get('articleId'));
                     }
                 }
@@ -90,7 +96,8 @@ class Router
                 elseif ($route === 'deleteCommentAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->deleteCommentAdmin($this->request->getGet()->get('commentId'));
                     }
                 }
@@ -112,7 +119,8 @@ class Router
                 elseif($route === 'administration'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
-                    }else{
+                    }
+                    else{
                     $this->backController->administration();
                     }
                 }

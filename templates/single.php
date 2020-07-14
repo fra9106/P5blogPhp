@@ -3,7 +3,7 @@
     <h1>
     <?= htmlspecialchars($article->getTitle());?>
     </h1>
-    <p><?= $this->session->show('add_comment'); ?></p>
+    <h4 class="red"><?= $this->session->show('add_comment'); ?></h4>
 </div>
 <div class="container">
     <div class="row justify-content-center text-center">
