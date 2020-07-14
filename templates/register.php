@@ -15,6 +15,10 @@
                 <input type="password" placeholder="Mot de passe" id="mdp" required name="mdp" class="form-control">
                 <?= isset($errors['pass']) ? $errors['pass'] : ''; ?>
             </div>
+            <div class="form-group">
+                <input type="password" placeholder="Confirmez Mot de passe" id="mdp2" required name="mdp2" class="form-control">
+                <?= isset($errors['pass']) ? $errors['pass'] : ''; ?>
+            </div>
             <br><br><br><br><br><br<br><br><br><br>
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Je crée mon compte !" id="submit" name="submit">
