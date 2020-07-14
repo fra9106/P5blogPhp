@@ -80,6 +80,9 @@ class Router
                 elseif($route === 'profile'){
                     $this->backController->profile($this->request->getGet()->get('userId'));
                 }
+                elseif($route === 'administration'){
+                    $this->backController->administration();
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

@@ -5,6 +5,7 @@
         <div class="reveal-fas" >
             <?= $this->session->get('login'); ?>
             <?= $this->session->get('pseudo'); ?>
+            <?= $this->session->get('not_admin'); ?>
         </div>
         <h1 class=" nom reveal-name">Franck Boutot</h1>
         <div class="divider-custom divider-light ">

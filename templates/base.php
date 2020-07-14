@@ -87,7 +87,7 @@
                 <div class="container mt-4 mb-4">
                     <small>Copyright &copy; monpersoweb.fr 2020 | <a href="index.php?route=legalPage">Mentions légales</a>
                     <?php if($this->session->get('droits') === '1') : ?>
-                        <a class="open text-center" href="index.php?route=addArticle">| Administation</a></small>
+                        <a class="open text-center" href="index.php?route=administration">| Administation</a></small>
                 </div>
                 <?php endif ?>
             </div>

@@ -24,7 +24,6 @@ class UserssDAO extends DAO
         $this->checkUser($post);
         $sql = "INSERT INTO users(pseudo, mail, pass, droits, create_date) VALUES(?, ?, ?, ?, NOW())";
         $this->createQuery($sql, [$post->get('pseudo'), $post->get('mail'), password_hash($post->get('mdp'), PASSWORD_DEFAULT),0]);
-        //var_dump($drdr); die;
     }
 
     public function checkUser(Parameter $post)
@@ -43,7 +42,6 @@ class UserssDAO extends DAO
         $data = $this->createQuery($sql, [$post->get('pseudo')]);
         $result = $data->fetch();
         $isPasswordValid = password_verify($post->get('mdp'), $result['pass']);
-        //var_dump($isPasswordValid); die;
         return [
             'result' => $result,
             'isPasswordValid' => $isPasswordValid
