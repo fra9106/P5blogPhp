@@ -57,19 +57,25 @@ class FrontController extends Controller
     public function register(Parameter $post)
     {
         if($post->get('submit')) {
+            $mdp = $this->post->get('mdp');
+            $mdp2 = $this->post->get('mdp2');
+            if($mdp == $mdp2){
             $errors = $this->validation->validate($post,'User');
             if($this->userssDAO->checkUser($post)) {
                 $errors['mail'] = $this->userssDAO->checkUser($post);
             }
             if(!$errors) {
                 $this->userssDAO->register($post);
-                $this->session->set('register', 'Votre inscription a bien été effectuée');
-                ; 
+                $this->session->set('register', 'Votre inscription a bien été effectuée !'); 
             }
-            return $this->view->render('register', [
+            return $this->view->render('login', [
                 'post' => $post,
                 'errors' => $errors
             ]);
+            }
+            else{
+                $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
+            } 
 
         }
         return $this->view->render('register');

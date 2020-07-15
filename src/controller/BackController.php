@@ -64,7 +64,7 @@ class BackController extends Controller
     public function deleteArticleAdmin($articleId)
     {
         $this->articleDAO->deleteArticle($articleId);
-        $this->session->set('delete_articleAdmin', 'Article supprimé');
+        $this->session->set('delete_articleAdmin', 'Article supprimé !');
         $articles = $this->articleDAO->getArticles();
         return $this->view->render('articlesListAdmin', [
            'articles' => $articles

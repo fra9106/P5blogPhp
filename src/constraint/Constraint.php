@@ -22,4 +22,5 @@ class Constraint
             return '<p>Le champ '.$name.' doit contenir au maximum '.$maxSize.' caractères</p>';
         }
     }
-}
+   
+}   

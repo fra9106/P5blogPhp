@@ -3,7 +3,6 @@
     
     <div class="container">
     <h1>Mes articles</h1><br>
-    <p><?= $this->session->show('add_article'); ?></p>
     <div class="row flex">
     <?php
     foreach($articles as $article)

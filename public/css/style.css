@@ -11,6 +11,10 @@ body {
     background-color: #ede7e3 !important;
 }
 
+.red{
+    color: red;
+}
+
 footer {
 
     padding-top: 30px;

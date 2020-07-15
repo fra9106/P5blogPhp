@@ -8,8 +8,8 @@
     <br/>
     <div class="container mt-4">
         <h2>Commentaires :</h2><br><br>
-        <p><?= $this->session->show('valid_comment'); ?></p>
-        <p><?= $this->session->show('delete_commentAdmin'); ?></p>
+        <h4 class="red"><?= $this->session->show('valid_comment'); ?></h4>
+        <h4 class="red"><?= $this->session->show('delete_commentAdmin'); ?></h4>
         <table class="table table-striped">
             <thead>
                 <tr>
