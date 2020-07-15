@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?route=profile">Profil</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?route=editProfile&amp;id=<?= $this->session->get('id'); ?>">Modifier profil</a>
+                </li>
                 <?php endif ?>
                 <?php if ($this->session->get('pseudo')) : ?>
                 <li class="nav-item">

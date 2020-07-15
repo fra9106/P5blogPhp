@@ -34,6 +34,7 @@ class UserssDAO extends DAO
         if($isUnique) {
             return '<br><p>Oups... ce mail existe déjà, merci d\'en choisir un autre...</p>';
         }
+        
     }
 
     public function login(Parameter $post)
@@ -55,6 +56,12 @@ class UserssDAO extends DAO
         $user = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($user);
+    }
+
+    public function updatePass(Parameter $post, $id)
+    {
+        $sql = 'UPDATE users SET pass = ? WHERE id = ?';
+        $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id]);
     }
 
 }

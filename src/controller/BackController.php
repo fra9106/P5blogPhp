@@ -117,4 +117,23 @@ class BackController extends Controller
         ]);
     }
 
+    public function updatePass(Parameter $post)
+    {
+        if($post->get('submit')) {
+           $user = $this->userssDAO->updatePass($post, $this->session->get('id'));
+            $this->session->set('update_password', 'Votre mot de passe a été mis à jour !');
+            return $this->view->render('editProfile', [
+                'user' => $user
+            ]);
+        }
+        return $this->view->render('update_password');
+    }
+
+    public function editProfile()
+    {  
+        $this->session->get('id');
+        return $this->view->render('editProfile');
+    }
+    
+
 }

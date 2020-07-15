@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <form class="form " method="post" action="index.php?route=editArticleAdmin&articleId=<?= htmlspecialchars($article->getId()); ?>">
-            <div class="control-group">
+                <div class="control-group">
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">
                         <input class="form-control formcont mt-0 mb-0" type="text" id="title" name="title"value="<?= htmlspecialchars($article->getTitle()); ?>"> 
                     </div>
@@ -34,8 +34,7 @@
                     </div>
                 </div>
                  <input class="btn btn-success mt-4" type="submit" value="Modifier" id="submit" name="submit"><br><br>
-               
-            </form>
+               </form>
         </div>
     </div>
 </div>
