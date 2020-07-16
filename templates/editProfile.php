@@ -17,13 +17,14 @@
                      <label>Pseudo :</label>
                      <input type="text" name="newpseudo" value="<?= $this->session->get('pseudo'); ?>" />
                      <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon pseudo"><br><br>
+                     <?= isset($errors['newpseudo']) ? $errors['newpseudo'] : ''; ?><br><br>
                   </div>
                </form>
                <form method="POST" action="index.php?route=updateMail">
                <h4 class="red"><?= $this->session->show('update_mail'); ?></h4>
                   <div class="form-group">
                      <label>Mail :</label>
-                     <input type="mail" name="newmail" value="<?= $this->session->get('mail'); ?>" />
+                     <input type="email" name="newmail" value="<?= $this->session->get('mail'); ?>" />
                      <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mail"><br><br>
                      <?= isset($errors['newmail']) ? $errors['newmail'] : ''; ?><br><br>
                   </div>
@@ -34,6 +35,7 @@
                      <label>Mot de passe :</label>
                      <input type="password" name="newpass" value="password"/>
                      <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mot de passe"><br><br>
+                     <?= isset($errors['newpass']) ? $errors['newpass'] : ''; ?><br><br>
                   </div>
                </form>
             </div>

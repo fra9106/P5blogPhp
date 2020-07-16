@@ -111,7 +111,6 @@ class BackController extends Controller
     {  
         $userId=$this->session->get('id');
         $user=$this->userssDAO->getUsersInfos($userId);
-
         return $this->view->render('profile', [
             'user' => $user
         ]);
@@ -120,10 +119,18 @@ class BackController extends Controller
     public function updatePseudo(Parameter $post)
     {
         if($post->get('submit')) {
-           $this->userssDAO->updatePseudo($post, $this->session->get('id'));
-           $this->session->set('update_pseudo', 'Le changement de votre pseudo à bien été pris en compte et apparaîtra à votre prochaine connexion !');
-           return $this->view->render('editProfile');
+            $errors = $this->validation->validate($post,'User');
+            if(!$errors){
+            $this->userssDAO->updatePseudo($post, $this->session->get('id'));
+            $this->session->set('update_pseudo', 'Le changement de votre pseudo à bien été pris en compte et apparaîtra à votre prochaine connexion !');
         }
+            return $this->view->render('editProfile', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+        return $this->view->render('editProfile');
+    
     }
 
     public function updateMail(Parameter $post)
@@ -148,11 +155,17 @@ class BackController extends Controller
     public function updatePass(Parameter $post)
     {
         if($post->get('submit')) {
+            $errors = $this->validation->validate($post,'User');
+            if(!$errors){
             $this->userssDAO->updatePass($post, $this->session->get('id'));
             $this->session->set('update_password', 'Le changement de votre mot de passe à bien été pris en compte !');
-            return $this->view->render('editProfile');
+            }
+            return $this->view->render('editProfile', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->render('update_password');
+        return $this->view->render('editProfile');
     }
 
     public function editProfile()

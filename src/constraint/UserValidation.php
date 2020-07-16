@@ -27,7 +27,19 @@ class UserValidation extends Validation
             $error = $this->checkPseudo($name, $value);
             $this->addError($name, $error);
         }
-        elseif ($name === 'pass') {
+        elseif($name === 'newpseudo') {
+            $error = $this->checkPseudo($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif ($name === 'mdp') {
+            $error = $this->checkPassword($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif ($name === 'mdp2') {
+            $error = $this->checkPassword($name, $value);
+            $this->addError($name, $error);
+        }
+        elseif ($name === 'newpass') {
             $error = $this->checkPassword($name, $value);
             $this->addError($name, $error);
         }
@@ -53,6 +65,8 @@ class UserValidation extends Validation
             return $this->constraint->maxLength('pseudo', $value, 255);
         }
     }
+
+
 
     private function checkPassword($name, $value)
     {
