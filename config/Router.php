@@ -119,6 +119,12 @@ class Router
                 elseif ($route === 'editProfile'){
                     $this->backController->editProfile($this->request->getGet()->get('id'));
                 }
+                elseif($route === 'updatePseudo'){
+                    $this->backController->updatePseudo($this->request->getPost('newpseudo'),$this->session->get('id'));
+                }
+                elseif($route === 'updateMail'){
+                    $this->backController->updateMail($this->request->getPost('newmail'),$this->session->get('id'));
+                }
                 elseif($route === 'updatePass'){
                     $this->backController->updatePass($this->request->getPost());
                 }
