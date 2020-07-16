@@ -81,10 +81,10 @@ class UserssDAO extends DAO
         $this->createQuery($sql,[$post->get('newmail'), $mail]);
     }
 
-    public function updatePass(Parameter $post, $id)
+    public function updatePass(Parameter $post, $id_user)
     {
         $sql = 'UPDATE users SET pass = ? WHERE id = ?';
-        $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id]);
+        $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id_user]);
     }
 
 }
