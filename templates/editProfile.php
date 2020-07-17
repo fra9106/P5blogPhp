@@ -16,8 +16,8 @@
                   <div class="form-group"><br><br>
                      <label>Pseudo :</label>
                      <input type="text" name="newpseudo" value="<?= $this->session->get('pseudo'); ?>" />
-                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon pseudo"><br><br>
-                     <?= isset($errors['newpseudo']) ? $errors['newpseudo'] : ''; ?><br><br>
+                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon pseudo"><br>
+                     <?= isset($errors['newpseudo']) ? $errors['newpseudo'] : ''; ?><br>
                   </div>
                </form>
                <form method="POST" action="index.php?route=updateMail">
@@ -25,8 +25,8 @@
                   <div class="form-group">
                      <label>Mail :</label>
                      <input type="email" name="newmail" value="<?= $this->session->get('mail'); ?>" />
-                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mail"><br><br>
-                     <?= isset($errors['newmail']) ? $errors['newmail'] : ''; ?><br><br>
+                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mail"><br>
+                     <?= isset($errors['newmail']) ? $errors['newmail'] : ''; ?><br>
                   </div>
                </form>
                <form method="POST" action="index.php?route=updatePass">
@@ -34,11 +34,14 @@
                   <div class="form-group">
                      <label>Mot de passe :</label>
                      <input type="password" name="newpass" value="password"/>
-                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mot de passe"><br><br>
-                     <?= isset($errors['newpass']) ? $errors['newpass'] : ''; ?><br><br>
+                     <input type="submit" name="submit"class="btn btn-success" value= "Je modifie mon mot de passe"><br>
+                     <?= isset($errors['newpass']) ? $errors['newpass'] : ''; ?><br>
+                  </div>
+                  <div>
+                     <a href="index.php?route=confirmDeleteAccount">Supprimer mon compte</a>
                   </div>
                </form>
             </div>
         </div>
     </div>
-</div><br><br><br><br>
+</div><br><br>

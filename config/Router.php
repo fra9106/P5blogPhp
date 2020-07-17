@@ -128,6 +128,12 @@ class Router
                 elseif($route === 'updatePass'){
                     $this->backController->updatePass($this->request->getPost());
                 }
+                elseif($route === 'deleteUserAccount'){
+                    $this->backController->deleteUserAccount();
+                }
+                elseif($route === 'confirmDeleteAccount'){
+                    $this->backController->confirmDeleteAccount();
+                }
                 elseif($route === 'administration'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');

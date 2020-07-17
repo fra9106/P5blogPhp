@@ -64,19 +64,24 @@ class FrontController extends Controller
             if($this->userssDAO->checkUser($post)) {
                 $errors['mail'] = $this->userssDAO->checkUser($post);
             }
-            if(!$errors) {
-                $this->userssDAO->register($post);
-                $this->session->set('register', 'Votre inscription a bien été prise en compte !'); 
-            }
-            return $this->view->render('register', [
-                'post' => $post,
-                'errors' => $errors
-            ]);
+            $mail = htmlspecialchars($this->post->get('mail'));
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                if(!$errors) {
+                    $this->userssDAO->register($post);
+                    $this->session->set('register', 'Votre inscription a bien été prise en compte !');
+                }
+                return $this->view->render('register', [
+                    'post' => $post,
+                    'errors' => $errors
+                    ]);
+                }
+                else{
+                    $this->session->set('register', 'Adresse mail non valide !');
+                }
             }
             else{
                 $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
-            } 
-
+            }
         }
         return $this->view->render('register');
     }
@@ -112,5 +117,4 @@ class FrontController extends Controller
     {
         $this->session->stop();
     }
-
 }

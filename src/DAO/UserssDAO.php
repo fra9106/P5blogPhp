@@ -87,4 +87,9 @@ class UserssDAO extends DAO
         $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id_user]);
     }
 
+    public function deleteUserAccount($pseudo)
+    {
+        $sql = 'DELETE FROM users WHERE pseudo = ?';
+        $this->createQuery($sql, [$pseudo]);
+    }
 }

@@ -66,8 +66,6 @@ class UserValidation extends Validation
         }
     }
 
-
-
     private function checkPassword($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {

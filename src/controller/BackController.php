@@ -173,5 +173,16 @@ class BackController extends Controller
         $this->session->get('id');
         return $this->view->render('editProfile');
     }
-    
+
+    public function deleteUserAccount()
+    {
+        $this->userssDAO->deleteUserAccount($this->session->get('pseudo'));
+        $this->session->stop();
+        return $this->view->render('home');
+    }
+
+    public function confirmDeleteAccount()
+    {
+        return $this->view->render('deleteAccountConfirm');
+    }
 }
