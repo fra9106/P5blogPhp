@@ -66,9 +66,9 @@ class FrontController extends Controller
             }
             if(!$errors) {
                 $this->userssDAO->register($post);
-                $this->session->set('register', 'Votre inscription a bien été effectuée !'); 
+                $this->session->set('register', 'Votre inscription a bien été prise en compte !'); 
             }
-            return $this->view->render('login', [
+            return $this->view->render('register', [
                 'post' => $post,
                 'errors' => $errors
             ]);
@@ -89,6 +89,7 @@ class FrontController extends Controller
                 $this->session->set('login', 'Content de vous revoir ' );
                 $this->session->set('id', $result['result']['id']);
                 $this->session->set('pseudo', $post->get('pseudo'));
+                $this->session->set('mail', $result['result']['mail']);
                 $this->session->set('droits', $result['result']['droits']);
                 if($this->session->get('droits') === '1') {
                     return $this->view->render('administration');
@@ -111,6 +112,5 @@ class FrontController extends Controller
     {
         $this->session->stop();
     }
-
 
 }

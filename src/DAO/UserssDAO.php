@@ -34,6 +34,7 @@ class UserssDAO extends DAO
         if($isUnique) {
             return '<br><p>Oups... ce mail existe déjà, merci d\'en choisir un autre...</p>';
         }
+        
     }
 
     public function login(Parameter $post)
@@ -55,6 +56,35 @@ class UserssDAO extends DAO
         $user = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($user);
+    }
+
+    public function updatePseudo(Parameter $post, $pseudo)
+    {
+        $sql = 'UPDATE users SET pseudo = ? WHERE id = ?';
+        $this->createQuery($sql,[$post->get('newpseudo'), $pseudo]);
+    }
+
+    public function checkNewMail($post)
+    {
+        $sql = 'SELECT COUNT(mail) FROM users WHERE mail = ?';
+        $result = $this->createQuery($sql, [$post->get('newmail')]);
+        $isUnique = $result->fetchColumn();
+        if($isUnique) {
+            return '<br><p>Oups... ce mail existe déjà, merci d\'en choisir un autre...</p>';
+        }
+    }
+
+    public function updateMail(Parameter $post, $mail)
+    {
+        $this->checkNewMail($post);
+        $sql = 'UPDATE users SET mail = ? WHERE id = ?';
+        $this->createQuery($sql,[$post->get('newmail'), $mail]);
+    }
+
+    public function updatePass(Parameter $post, $id_user)
+    {
+        $sql = 'UPDATE users SET pass = ? WHERE id = ?';
+        $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id_user]);
     }
 
 }

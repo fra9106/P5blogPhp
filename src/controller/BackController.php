@@ -111,10 +111,67 @@ class BackController extends Controller
     {  
         $userId=$this->session->get('id');
         $user=$this->userssDAO->getUsersInfos($userId);
-
         return $this->view->render('profile', [
             'user' => $user
         ]);
     }
 
+    public function updatePseudo(Parameter $post)
+    {
+        if($post->get('submit')) {
+            $errors = $this->validation->validate($post,'User');
+            if(!$errors){
+            $this->userssDAO->updatePseudo($post, $this->session->get('id'));
+            $this->session->set('update_pseudo', 'Le changement de votre pseudo à bien été pris en compte et apparaîtra à votre prochaine connexion !');
+        }
+            return $this->view->render('editProfile', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+        return $this->view->render('editProfile');
+    
+    }
+
+    public function updateMail(Parameter $post)
+    {
+        if($post->get('submit')) {
+            $errors = $this->validation->validate($post,'User');
+            if($this->userssDAO->checkNewMail($post)) {
+                $errors['newmail'] = $this->userssDAO->checkNewMail($post);
+            }
+            if(!$errors) {
+            $this->userssDAO->updateMail($post, $this->session->get('id'));
+            $this->session->set('update_mail', 'Le changement de votre mail à bien été pris en compte et apparaîtra à votre prochaine connexion !');
+            }
+           return $this->view->render('editProfile', [
+                'post' => $post,
+                'errors' => $errors
+           ]);
+        }
+        return $this->view->render('editProfile');
+    }
+
+    public function updatePass(Parameter $post)
+    {
+        if($post->get('submit')) {
+            $errors = $this->validation->validate($post,'User');
+            if(!$errors){
+            $this->userssDAO->updatePass($post, $this->session->get('id'));
+            $this->session->set('update_password', 'Le changement de votre mot de passe à bien été pris en compte !');
+            }
+            return $this->view->render('editProfile', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
+        }
+        return $this->view->render('editProfile');
+    }
+
+    public function editProfile()
+    {  
+        $this->session->get('id');
+        return $this->view->render('editProfile');
+    }
+    
 }

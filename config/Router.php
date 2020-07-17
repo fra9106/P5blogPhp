@@ -116,6 +116,18 @@ class Router
                 elseif($route === 'profile'){
                     $this->backController->profile($this->request->getGet()->get('userId'));
                 }
+                elseif ($route === 'editProfile'){
+                    $this->backController->editProfile($this->request->getGet()->get('id'));
+                }
+                elseif($route === 'updatePseudo'){
+                    $this->backController->updatePseudo($this->request->getPost('newpseudo'),$this->session->get('id'));
+                }
+                elseif($route === 'updateMail'){
+                    $this->backController->updateMail($this->request->getPost('newmail'),$this->session->get('id'));
+                }
+                elseif($route === 'updatePass'){
+                    $this->backController->updatePass($this->request->getPost());
+                }
                 elseif($route === 'administration'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
