@@ -10,4 +10,4 @@
     <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
     <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
-    <h3><a href="index.php?action=listUsersAdmin">Gestion des membres</a></h3><br><br><br><br><br>
+    <h3><a href="index.php?route=usersListAdmin">Gestion des membres</a></h3><br><br><br><br><br>

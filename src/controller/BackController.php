@@ -185,4 +185,30 @@ class BackController extends Controller
     {
         return $this->view->render('deleteAccountConfirm');
     }
+
+    public function usersListAdmin()
+    {
+        $users = $this->userssDAO->usersListAdmin();
+        return $this->view->render('usersListAdmin', [
+            'users' => $users
+        ]);
+    }
+
+    public function confirmDeleteUserAdmin($userId)
+    {
+        $user = $this->userssDAO->confirmDeleteUserAdmin($userId);
+        return $this->view->render('confirmDeleteUserAdmin', [
+            'user' => $user
+        ]);
+    }
+
+    public function deleteUserAccountAdmin($userId)
+    {
+        $this->userssDAO->deleteUserAccountAdmin($userId);
+        $this->session->set('delete_user', 'Compte supprimé !');
+        $users = $this->userssDAO->usersListAdmin();
+        return $this->view->render('usersListAdmin', [
+            'users' => $users
+        ]);
+    }
 }

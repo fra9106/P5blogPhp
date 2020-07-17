@@ -1,4 +1,4 @@
-<?php $this->title = "Confirmer suppression commentaire"; ?>
+<?php $this->title = "Confirmer suppression de compte"; ?>
 <div class="jumbotron text-center"><br><br>
     <h3>
     <?= $this->session->get('pseudo'); ?> vous êtes sur le point de supprimer votre compte<br>voulez-vous vraiment exécuter cette opération ?

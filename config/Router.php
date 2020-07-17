@@ -61,6 +61,25 @@ class Router
                     $this->backController->validComment($this->request->getGet()->get('commentId'));
                     }
                 }
+                elseif ($route=== 'usersListAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    else{
+                    $this->backController->usersListAdmin();
+                    } 
+                }
+                elseif ($route === 'confirmDeleteUserAdmin'){
+                    $this->backController->confirmDeleteUserAdmin($this->request->getGet()->get('userId'));
+                }
+                elseif ( $route === 'deleteUserAccountAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    else{
+                    $this->backController->deleteUserAccountAdmin($this->request->getGet()->get('userId'));
+                    }
+                }
                 elseif ($route === 'articlesListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
