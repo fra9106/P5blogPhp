@@ -211,4 +211,17 @@ class BackController extends Controller
             'users' => $users
         ]);
     }
+
+    public function addMessage(Parameter $post)
+    {
+        if($post->get('submit') && $this->session->get('id')) {
+           $this->messageHomeDAO->addMessage($post);
+           $this->session->set('add_message', 'Message envoyé !');
+           return $this->view->render('home');
+        }
+        else{
+            $this->session->set('add_message', 'Pour envoyer un message, merci de vous connecter !');
+        }
+        return $this->view->render('home');
+    }
 }

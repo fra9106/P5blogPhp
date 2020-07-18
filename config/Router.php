@@ -161,6 +161,9 @@ class Router
                     $this->backController->administration();
                     }
                 }
+                elseif ($route === 'addMessage'){
+                    $this->backController->addMessage($this->request->getPost());
+                }
                 else{
                     $this->errorController->errorNotFound();
                 }

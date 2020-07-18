@@ -7,6 +7,7 @@ use App\src\DAO\ArticleDAO;
 use App\src\DAO\CommentDAO;
 use App\src\model\View;
 use App\src\constraint\Validation;
+use App\src\DAO\ContactHomeDAO;
 use App\src\DAO\UserssDAO;
 
 abstract class Controller
@@ -20,6 +21,7 @@ abstract class Controller
     protected $session;
     protected $validation;
     protected $userssDAO;
+    protected $messageHomeDAO;
    
 
     public function __construct()
@@ -33,5 +35,6 @@ abstract class Controller
         $this->session = $this->request->getSession();
         $this->validation = new Validation();
         $this->userssDAO = new UserssDAO();
+        $this->messageHomeDAO = new ContactHomeDAO();
     }
 }

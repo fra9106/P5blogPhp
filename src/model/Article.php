@@ -19,7 +19,6 @@ class Article
         return $this->id_article;
     }
 
-    
     public function setId($id_article)
     {
         $this->id_article = $id_article;
@@ -30,8 +29,7 @@ class Article
         return $this->pseudo;
     }
 
-   
-    public function setPseudo($pseudo)
+   public function setPseudo($pseudo)
     {
         $this->pseudo = $pseudo;
     }
@@ -46,38 +44,32 @@ class Article
         return $this->mini_content;
     }
 
-    
     public function setMiniContent($mini_content)
     {
         $this->mini_content = $mini_content;
     }
 
-    
     public function setTitle($title)
     {
         $this->title = $title;
     }
 
-    
     public function getContent()
     {
         return $this->content;
     }
 
-    
     public function setContent($content)
     {
         $this->content = $content;
     }
 
-    
     public function getCreationDate()
     {
         return $this->creation_date_fr;
     }
 
-   
-    public function setCreationDate($creation_date)
+   public function setCreationDate($creation_date)
     {
         $this->creation_date_fr = $creation_date;
     }
@@ -87,8 +79,7 @@ class Article
         return $this->update_date_fr;
     }
 
-   
-    public function setUpdateDate($update_date)
+   public function setUpdateDate($update_date)
     {
         $this->update_date_fr = $update_date;
     }
