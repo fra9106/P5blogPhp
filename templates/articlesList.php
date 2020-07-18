@@ -6,7 +6,7 @@
     <div class="row flex">
     <?php
     foreach($articles as $article)
-    {//var_dump($article);
+    {
         ?>
         <div class="col-sm-12 col-md-6 col-lg-3"><br>
                 <div class="card  mb-4">

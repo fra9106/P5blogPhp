@@ -224,4 +224,12 @@ class BackController extends Controller
         }
         return $this->view->render('home');
     }
+
+    public function messagesListAdmin()
+    {
+        $messages = $this->messageHomeDAO->messagesListAdmin();
+        return $this->view->render('messagesListAdmin', [
+           'messages' => $messages
+        ]);
+    }
 }

@@ -164,6 +164,14 @@ class Router
                 elseif ($route === 'addMessage'){
                     $this->backController->addMessage($this->request->getPost());
                 }
+                elseif  ($route === 'messagesListAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    else{
+                    $this->backController->messagesListAdmin();
+                    }
+                } 
                 else{
                     $this->errorController->errorNotFound();
                 }
