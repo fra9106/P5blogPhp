@@ -173,5 +173,61 @@ class BackController extends Controller
         $this->session->get('id');
         return $this->view->render('editProfile');
     }
-    
+
+    public function deleteUserAccount()
+    {
+        $this->userssDAO->deleteUserAccount($this->session->get('pseudo'));
+        $this->session->stop();
+        return $this->view->render('home');
+    }
+
+    public function confirmDeleteAccount()
+    {
+        return $this->view->render('deleteAccountConfirm');
+    }
+
+    public function usersListAdmin()
+    {
+        $users = $this->userssDAO->usersListAdmin();
+        return $this->view->render('usersListAdmin', [
+            'users' => $users
+        ]);
+    }
+
+    public function confirmDeleteUserAdmin($userId)
+    {
+        $user = $this->userssDAO->confirmDeleteUserAdmin($userId);
+        return $this->view->render('confirmDeleteUserAdmin', [
+            'user' => $user
+        ]);
+    }
+
+    public function deleteUserAccountAdmin($userId)
+    {
+        $this->userssDAO->deleteUserAccountAdmin($userId);
+        $this->session->set('delete_user', 'Compte supprimé !');
+        $users = $this->userssDAO->usersListAdmin();
+        return $this->view->render('usersListAdmin', [
+            'users' => $users
+        ]);
+    }
+
+    public function addMessage(Parameter $post)
+    {
+        if($post->get('submit') && $this->session->get('id')) {
+           $this->messageHomeDAO->addMessage($post);
+           $this->session->set('add_message', 'Message envoyé !');
+           return $this->view->render('home');
+        }
+        $this->session->set('add_message', 'Pour envoyer un message, merci de vous connecter !');
+        return $this->view->render('home');
+    }
+
+    public function messagesListAdmin()
+    {
+        $messages = $this->messageHomeDAO->messagesListAdmin();
+        return $this->view->render('messagesListAdmin', [
+           'messages' => $messages
+        ]);
+    }
 }

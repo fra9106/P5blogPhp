@@ -2,10 +2,11 @@
 
 <div class="articlewrite">
     <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
-    <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
     <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
-    <br />
+    <h3><a href="index.php?route=usersListAdmin">Gestion des membres</a></h3>
+    <h3><a href="index.php?route=messagesListAdmin">Gestion des messages</a></h3>
+    <br>
     <h1>Rédaction Articles : </h1>
     <div class="row">
         <div class="col-lg-8 mx-auto">

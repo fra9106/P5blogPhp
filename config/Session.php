@@ -44,5 +44,9 @@ class Session
         header('Location:index.php');
     }
     
+    public function start()
+    {
+        session_start();
+    }
 
 }

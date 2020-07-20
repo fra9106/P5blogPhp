@@ -38,9 +38,7 @@ class Router
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->addArticle($this->request->getPost());
-                    }
                 }
                 elseif ($route === 'addComment'){
                     $this->frontController->addComment($this->request->getPost(),$this ->session->get('id'), $this->request->getGet()->get('articleId'));
@@ -49,40 +47,46 @@ class Router
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->commentsListAdmin();
-                    }
                 }
                 elseif($route === 'validComment'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->validComment($this->request->getGet()->get('commentId'));
+                }
+                elseif ($route=== 'usersListAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
                     }
+                    $this->backController->usersListAdmin();
+                }
+                elseif ($route === 'confirmDeleteUserAdmin'){
+                    $this->backController->confirmDeleteUserAdmin($this->request->getGet()->get('userId'));
+                }
+                elseif ( $route === 'deleteUserAccountAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    $this->backController->deleteUserAccountAdmin($this->request->getGet()->get('userId'));
                 }
                 elseif ($route === 'articlesListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
-                    $this->backController->articlesListAdmin();}
+                    $this->backController->articlesListAdmin();
                 }
                 elseif ($route === 'editArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
-                    }
                 }
                 elseif ( $route === 'deleteArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->deleteArticleAdmin($this->request->getGet()->get('articleId'));
-                    }
                 }
                 elseif ($route === 'legalPage'){
                     $this->frontController->legalPage();
@@ -97,9 +101,7 @@ class Router
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->deleteCommentAdmin($this->request->getGet()->get('commentId'));
-                    }
                 }
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
@@ -128,14 +130,29 @@ class Router
                 elseif($route === 'updatePass'){
                     $this->backController->updatePass($this->request->getPost());
                 }
+                elseif($route === 'deleteUserAccount'){
+                    $this->backController->deleteUserAccount();
+                }
+                elseif($route === 'confirmDeleteAccount'){
+                    $this->backController->confirmDeleteAccount();
+                }
                 elseif($route === 'administration'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    else{
                     $this->backController->administration();
-                    }
+                    
                 }
+                elseif ($route === 'addMessage'){
+                    $this->backController->addMessage($this->request->getPost());
+                }
+                elseif  ($route === 'messagesListAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    $this->backController->messagesListAdmin();
+                    
+                } 
                 else{
                     $this->errorController->errorNotFound();
                 }

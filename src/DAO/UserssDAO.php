@@ -87,4 +87,37 @@ class UserssDAO extends DAO
         $this->createQuery($sql, [password_hash($post->get('newpass'), PASSWORD_DEFAULT), $id_user]);
     }
 
+    public function deleteUserAccount($pseudo)
+    {
+        $sql = 'DELETE FROM users WHERE pseudo = ?';
+        $this->createQuery($sql, [$pseudo]);
+    }
+
+    public function usersListAdmin()
+    {
+        $sql = 'SELECT id, pseudo, mail, pass, droits, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users';
+        $result = $this->createQuery($sql);
+        $users = [];
+        foreach($result as $row){
+            $userId = $row['id'];
+            $users[$userId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $users;
+    }
+
+    public function confirmDeleteUserAdmin($userId)
+    {
+        $sql = 'SELECT id, pseudo, mail, pass, droits, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users WHERE id = ?  '; 
+        $result = $this->createQuery($sql, [$userId]);
+        $user = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($user);
+    }
+
+    public function deleteUserAccountAdmin($userId)
+    {
+        $sql = 'DELETE FROM users WHERE id = ?';
+        $this->createQuery($sql, [$userId]);
+    }
 }

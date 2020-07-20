@@ -64,19 +64,24 @@ class FrontController extends Controller
             if($this->userssDAO->checkUser($post)) {
                 $errors['mail'] = $this->userssDAO->checkUser($post);
             }
-            if(!$errors) {
-                $this->userssDAO->register($post);
-                $this->session->set('register', 'Votre inscription a bien été prise en compte !'); 
-            }
-            return $this->view->render('register', [
-                'post' => $post,
-                'errors' => $errors
-            ]);
+            $mail = htmlspecialchars($this->post->get('mail'));
+            if (filter_var($mail, FILTER_VALIDATE_EMAIL)){
+                if(!$errors) {
+                    $this->userssDAO->register($post);
+                    $this->session->set('register', 'Votre inscription a bien été prise en compte !');
+                }
+                return $this->view->render('register', [
+                    'post' => $post,
+                    'errors' => $errors
+                    ]);
+                }
+                else{
+                    $this->session->set('register', 'Adresse mail non valide !');
+                }
             }
             else{
                 $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
-            } 
-
+            }
         }
         return $this->view->render('register');
     }
@@ -94,16 +99,12 @@ class FrontController extends Controller
                 if($this->session->get('droits') === '1') {
                     return $this->view->render('administration');
                 }
-                else{
                     return $this->view->render('home');
                 }
-            }
-            else {
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
                 return $this->view->render('login', [
                     'post'=> $post
                 ]);
-            }
         }
         return $this->view->render('login');
     }
@@ -111,6 +112,7 @@ class FrontController extends Controller
     public function logout()
     {
         $this->session->stop();
+        $this->session->start();
+        $this->session->set('logout', 'À bientôt');
     }
-
 }
