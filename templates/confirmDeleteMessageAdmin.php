@@ -12,7 +12,7 @@
             <div class=" card mb-4">
                 <div class="card-body">
                     <p class="card-text">Voulez-vous vraiment supprimer ce message ?</p>
-                    <a href="index.php?route=deleteMessageAdmin&articleId=<?= $message->getId(); ?>"><button type="button" class="btn  btn-danger">Supprimer</button></a><br><br>
+                    <a href="index.php?route=deleteMessageAdmin&messageId=<?= $message->getId(); ?>"><button type="button" class="btn  btn-danger">Supprimer</button></a><br><br>
                     <p class="card-text">Retour à la liste des articles</p>
                     <a href="index.php?route=messagesListAdmin"><button type="button" class="btn btn-success">Retour</button></a>
                 </div>

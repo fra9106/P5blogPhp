@@ -141,7 +141,6 @@ class Router
                         return $this->view->render('login');
                     }
                     $this->backController->administration();
-                    
                 }
                 elseif ($route === 'addMessage'){
                     $this->backController->addMessage($this->request->getPost());
@@ -160,6 +159,12 @@ class Router
                     }
                     elseif($route === 'confirmDeleteMessage'){
                         $this->backController->confirmDeleteMessageAdmin($this->request->getGet()->get('messageId'));
+                    }
+                    elseif ( $route === 'deleteMessageAdmin'){
+                        if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                            return $this->view->render('login');
+                        }
+                        $this->backController->deleteMessageAdmin($this->request->getGet()->get('messageId'));
                     }
                 else{
                     $this->errorController->errorNotFound();

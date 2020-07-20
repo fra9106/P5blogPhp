@@ -45,7 +45,12 @@ class ContactHomeDAO extends DAO
         $message = $result->fetch();
         $result->closeCursor();
         return $this->buildObject($message);
-    
+    }
+
+    public function deleteMessageAdmin($messageId)
+    {
+        $sql = 'DELETE FROM homepage WHERE id = ?';
+        $this->createQuery($sql, [$messageId]);
     }
 
 }
