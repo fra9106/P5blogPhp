@@ -238,4 +238,12 @@ class BackController extends Controller
             'message' => $message
         ]);
     }
+
+    public function confirmDeleteMessageAdmin($messageId)
+    {
+        $message = $this->messageHomeDAO->messageAdmin($messageId);
+        return $this->view->render('confirmDeleteMessageAdmin', [
+            'message' => $message
+        ]);
+    }
 }

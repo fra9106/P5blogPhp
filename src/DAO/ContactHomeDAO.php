@@ -47,4 +47,5 @@ class ContactHomeDAO extends DAO
         return $this->buildObject($message);
     
     }
+
 }

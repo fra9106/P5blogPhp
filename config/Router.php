@@ -158,6 +158,9 @@ class Router
                     }
                     $this->backController->messageAdmin($this->request->getGet()->get('messageId'));
                     }
+                    elseif($route === 'confirmDeleteMessage'){
+                        $this->backController->confirmDeleteMessageAdmin($this->request->getGet()->get('messageId'));
+                    }
                 else{
                     $this->errorController->errorNotFound();
                 }
