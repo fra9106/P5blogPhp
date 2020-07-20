@@ -35,7 +35,7 @@
                 <td><?= htmlspecialchars($message->getContent());?></td>
                 <td><?= htmlspecialchars($message->getCreationDate());?></td>
                 <td>
-                    <a href="index.php?route=editMessageAdmin&articleId=<?= $message->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-success">Voir le message</button></a>
+                    <a href="index.php?route=messageAdmin&messageId=<?= $message->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-success">Voir le message</button></a>
                 </td>
                 <td>
                     <a href="index.php?route=confirmDeleteMessage&messageId=<?= $message->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button></a>

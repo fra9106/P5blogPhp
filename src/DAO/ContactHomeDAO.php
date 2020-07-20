@@ -37,4 +37,14 @@ class ContactHomeDAO extends DAO
         $result->closeCursor();
         return $messages;
     }
+
+    public function messageAdmin($messageId)
+    {
+        $sql = 'SELECT id, username, mail, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM homepage WHERE id = ?';
+        $result = $this->createQuery($sql, [$messageId]);
+        $message = $result->fetch();
+        $result->closeCursor();
+        return $this->buildObject($message);
+    
+    }
 }

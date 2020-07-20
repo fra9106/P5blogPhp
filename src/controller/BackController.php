@@ -230,4 +230,12 @@ class BackController extends Controller
            'messages' => $messages
         ]);
     }
+
+    public function messageAdmin($messageId)
+    {
+        $message = $this->messageHomeDAO->messageAdmin($messageId);
+        return $this->view->render('messageAdmin', [
+            'message' => $message
+        ]);
+    }
 }

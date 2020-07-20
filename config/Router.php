@@ -151,8 +151,13 @@ class Router
                         return $this->view->render('login');
                     }
                     $this->backController->messagesListAdmin();
-                    
-                } 
+                    }
+                elseif  ($route === 'messageAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    $this->backController->messageAdmin($this->request->getGet()->get('messageId'));
+                    }
                 else{
                     $this->errorController->errorNotFound();
                 }
