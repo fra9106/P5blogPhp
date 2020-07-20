@@ -32,7 +32,7 @@
                 <td><?= htmlspecialchars($user->getMail());?></td>
                 <td><?= htmlspecialchars($user->getCreateDate());?></td>
                 <td>
-                    <a href="index.php?route=confirmDeleteUserAdmin&userId=<?= htmlspecialchars($user->getId()); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a>
+                    <a href="index.php?route=confirmDeleteUserAdmin&userId=<?= $user->getId(); ?>"><button type="button" class="btn btn-outline-danger">Supprimer</button></a>
                 </td>
             </tr>
             <?php

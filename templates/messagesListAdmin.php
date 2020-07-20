@@ -20,7 +20,8 @@
                     <th>MAIL</th>
                     <th>CONTENU</th>
                     <th>DATE DE CREATION</th>
-                    <th>ACTION</th>
+                    <th>AFFICHER</th>
+                    <th>SUPPRIMER</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,9 @@
                 <td><?= htmlspecialchars($message->getMail());?></td>
                 <td><?= htmlspecialchars($message->getContent());?></td>
                 <td><?= htmlspecialchars($message->getCreationDate());?></td>
+                <td>
+                    <a href="index.php?route=editMessageAdmin&articleId=<?= $message->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-success">Voir le message</button></a>
+                </td>
                 <td>
                     <a href="index.php?route=confirmDeleteMessage&messageId=<?= $message->getId(); ?>"><button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button></a>
                 </td>

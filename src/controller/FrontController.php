@@ -99,16 +99,12 @@ class FrontController extends Controller
                 if($this->session->get('droits') === '1') {
                     return $this->view->render('administration');
                 }
-                else{
                     return $this->view->render('home');
                 }
-            }
-            else {
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
                 return $this->view->render('login', [
                     'post'=> $post
                 ]);
-            }
         }
         return $this->view->render('login');
     }

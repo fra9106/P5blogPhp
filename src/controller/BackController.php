@@ -219,9 +219,7 @@ class BackController extends Controller
            $this->session->set('add_message', 'Message envoyé !');
            return $this->view->render('home');
         }
-        else{
-            $this->session->set('add_message', 'Pour envoyer un message, merci de vous connecter !');
-        }
+        $this->session->set('add_message', 'Pour envoyer un message, merci de vous connecter !');
         return $this->view->render('home');
     }
 
