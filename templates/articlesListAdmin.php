@@ -17,6 +17,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>Catégorie</th>
                     <th>Titre</th>
                     <th>Chapô</th>
                     <th>Contenu</th>
@@ -31,6 +32,7 @@
             {
             ?>
             <tr>
+                <td><?= htmlspecialchars($article->getCategory());?></td>
                 <td><?= htmlspecialchars($article->getTitle());?></td>
                 <td><?= htmlspecialchars($article->getMiniContent());?></td>
                 <td><?= $article->getContent();?></td>

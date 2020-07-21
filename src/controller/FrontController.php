@@ -19,6 +19,20 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     * recovery articles list by categories
+     *
+     * @param [type] $catId
+     * @return void
+     */
+    public function articlesByCat($catId)
+    {
+        $articles = $this->articleDAO->articlesByCat($catId);
+        return $this->view->render('articlesList', [
+           'articles' => $articles
+        ]);
+    }
+
     public function article($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);

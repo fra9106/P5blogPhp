@@ -106,6 +106,9 @@ class Router
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
                 }
+                elseif ($route === 'articlesByCat'){
+                    $this->frontController->articlesByCat($this->request->getGet()->get('id_category'));
+                }
                 elseif($route === 'register'){
                     $this->frontController->register($this->request->getPost());
                 }

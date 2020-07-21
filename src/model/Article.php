@@ -6,6 +6,7 @@ class Article
 {
     
     private $id_article;
+    private $id_category;
     private $pseudo;
     private $mini_content;
     private $title;
@@ -23,6 +24,17 @@ class Article
     {
         $this->id_article = $id_article;
     }
+
+    public function getCategory()
+    {
+        return $this->id_category;
+    }
+
+    public function setCategory($id_category)
+    {
+        $this->id_category = $id_category;
+    }
+
 
     public function getPseudo()
     {
