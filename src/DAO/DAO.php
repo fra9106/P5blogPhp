@@ -7,11 +7,18 @@ use Exception;
 
 class DAO
 {
-
+    /**
+     * connect db
+     */
     const DB_HOST = 'mysql:host=localhost;dbname=p5blogphp;charset=utf8';
     const DB_USER = 'root';
     const DB_PASS = '';
     
+    /**
+     * check connexion
+     *
+     * @var [type]
+     */
     private $connection;
     
     private function checkConnect()
@@ -24,6 +31,11 @@ class DAO
         return $this->connection;
     }
     
+    /**
+     * get connect
+     *
+     * @return void
+     */
     private function getConnect()
     {
     
@@ -41,6 +53,9 @@ class DAO
         
     }
     
+    /**
+     * function for prepare or query request
+     */
     protected function createQuery($sql, $parameters = null)
     {
         if($parameters)

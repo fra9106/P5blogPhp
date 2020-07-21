@@ -12,7 +12,7 @@
             <div class="col-6"><br>
                 <div class=" card mb-4">
                     <div class="card-body">
-                        <h2>Mettre à jour ma fiche</h2>
+                        <h2>Fiche <?= $this->session->get('pseudo'); ?></h2>
                         <p>Bonjour <?= $this->session->get('pseudo'); ?></p>
                         <strong>Pseudo : </strong><br>
                         <p class="card-text"><?= htmlspecialchars($user->getPseudo()); ?></p>

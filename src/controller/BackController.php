@@ -52,7 +52,6 @@ class BackController extends Controller
         ]);
     }
 
-
     public function confirmDeleteArticle($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
@@ -225,6 +224,32 @@ class BackController extends Controller
 
     public function messagesListAdmin()
     {
+        $messages = $this->messageHomeDAO->messagesListAdmin();
+        return $this->view->render('messagesListAdmin', [
+           'messages' => $messages
+        ]);
+    }
+
+    public function messageAdmin($messageId)
+    {
+        $message = $this->messageHomeDAO->messageAdmin($messageId);
+        return $this->view->render('messageAdmin', [
+            'message' => $message
+        ]);
+    }
+
+    public function confirmDeleteMessageAdmin($messageId)
+    {
+        $message = $this->messageHomeDAO->messageAdmin($messageId);
+        return $this->view->render('confirmDeleteMessageAdmin', [
+            'message' => $message
+        ]);
+    }
+
+    public function deleteMessageAdmin($messageId)
+    {
+        $this->messageHomeDAO->deleteMessageAdmin($messageId);
+        $this->session->set('delete_messageAdmin', 'Message supprimé !');
         $messages = $this->messageHomeDAO->messagesListAdmin();
         return $this->view->render('messagesListAdmin', [
            'messages' => $messages

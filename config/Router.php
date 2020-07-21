@@ -106,6 +106,9 @@ class Router
                 elseif ($route === 'articlesList'){
                     $this->frontController->articlesList();
                 }
+                elseif ($route === 'articlesByCat'){
+                    $this->frontController->articlesByCat($this->request->getGet()->get('id_category'));
+                }
                 elseif($route === 'register'){
                     $this->frontController->register($this->request->getPost());
                 }
@@ -141,7 +144,6 @@ class Router
                         return $this->view->render('login');
                     }
                     $this->backController->administration();
-                    
                 }
                 elseif ($route === 'addMessage'){
                     $this->backController->addMessage($this->request->getPost());
@@ -151,8 +153,22 @@ class Router
                         return $this->view->render('login');
                     }
                     $this->backController->messagesListAdmin();
-                    
-                } 
+                    }
+                elseif  ($route === 'messageAdmin'){
+                    if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                        return $this->view->render('login');
+                    }
+                    $this->backController->messageAdmin($this->request->getGet()->get('messageId'));
+                    }
+                    elseif($route === 'confirmDeleteMessage'){
+                        $this->backController->confirmDeleteMessageAdmin($this->request->getGet()->get('messageId'));
+                    }
+                    elseif ( $route === 'deleteMessageAdmin'){
+                        if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
+                            return $this->view->render('login');
+                        }
+                        $this->backController->deleteMessageAdmin($this->request->getGet()->get('messageId'));
+                    }
                 else{
                     $this->errorController->errorNotFound();
                 }

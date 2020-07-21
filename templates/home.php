@@ -8,7 +8,7 @@
                 <?= $this->session->show('login'); ?>
                 <?= $this->session->get('pseudo'); ?></p>
             </div>
-            <h1 class=" nom reveal-name">Franck Boutot</h1>
+            <h1 class=" nom reveal-name">Franck Boutot</h1><span class="webDeveloper">Web developer</span>
             <div class="divider-custom divider-light ">
             <div class="divider-custom-icon">
                 <i class=" reveal-fas fas fa-desktop"></i>

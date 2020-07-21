@@ -9,10 +9,17 @@ use App\src\model\Article;
 class ArticleDAO extends DAO
 {
 
+    /**
+     * builder article objet
+     *
+     * @param [type] $row
+     * @return void
+     */
     private function buildObject($row)
     {
         $article = new Article();
         $article->setId($row['id']);
+        $article->setCategory($row['category']);
         $article->setPseudo($row['pseudo']);
         $article->setMiniContent($row['mini_content']);
         $article->setTitle($row['title']);
@@ -22,9 +29,14 @@ class ArticleDAO extends DAO
         return $article;
     }
 
+    /**
+     * recovery articles list
+     *
+     * @return void
+     */
     public function getArticles()
     {
-        $sql = 'SELECT categories.id, categories.category, articles.id, users.pseudo, articles.mini_content, articles.title, articles.content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(update_date, \'%d/%m/%Y à %Hh%imin%ss\') AS update_date_fr FROM articles INNER JOIN users ON articles.id_user = users.id INNER JOIN categories ON articles.id_category = categories.id AND valid = 1 ORDER BY creation_date DESC';
+        $sql = 'SELECT categories.id, categories.category, articles.id, users.pseudo, articles.mini_content, articles.title, articles.content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(update_date, \'%d/%m/%Y à %Hh%imin%ss\') AS update_date_fr FROM articles INNER JOIN users ON articles.id_user = users.id INNER JOIN categories ON articles.id_category = categories.id ORDER BY creation_date DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach($result as $row){
@@ -35,6 +47,31 @@ class ArticleDAO extends DAO
         return $articles;
     }
 
+    /**
+     * recovery articles list by categories
+     *
+     * @param [type] $catId
+     * @return void
+     */
+    public function articlesByCat($catId)
+    {
+        $sql = 'SELECT categories.id, categories.category, articles.id, users.pseudo, articles.mini_content, articles.title, articles.content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(update_date, \'%d/%m/%Y à %Hh%imin%ss\') AS update_date_fr FROM articles INNER JOIN users ON articles.id_user = users.id INNER JOIN categories ON articles.id_category = categories.id  WHERE id_category = ? ORDER BY creation_date DESC';
+        $result = $this->createQuery($sql, [$catId]);
+        $articles = [];
+        foreach($result as $row){
+            $articleId = $row['id'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
+
+    /**
+     * recovery article by Id
+     *
+     * @param [type] $articleId
+     * @return void
+     */
     public function getArticle($articleId)
     {
         $sql = 'SELECT categories.id, categories.category, articles.id, users.pseudo, articles.mini_content, articles.title, articles.content, articles.valid, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(update_date, \'%d/%m/%Y à %Hh%imin%ss\') AS update_date_fr FROM articles INNER JOIN users ON articles.id_user = users.id INNER JOIN categories ON articles.id_category = categories.id WHERE articles.id = ?';
@@ -45,12 +82,26 @@ class ArticleDAO extends DAO
     
     }
 
+    /**
+     * add article
+     *
+     * @param Parameter $post
+     * @param [type] $idUser
+     * @return void
+     */
     public function addArticle(Parameter $post, $idUser)
     {
-        $sql = 'INSERT INTO articles(id_user, title, mini_content, content, creation_date) VALUES (?, ?, ?, ?, NOW())';
-        $this->createQuery($sql, [$idUser, $post->get('title'), $post->get('mini_content'), $post->get('content')]);
+        $sql = 'INSERT INTO articles(id_category, id_user, title, mini_content, content, creation_date) VALUES (?, ?, ?, ?, ?, NOW())';
+        $this->createQuery($sql, [$post->get('id_category'), $idUser, $post->get('title'), $post->get('mini_content'), $post->get('content')]);
     }
 
+    /**
+     * edit article by Id
+     *
+     * @param Parameter $post
+     * @param [type] $articleId
+     * @return void
+     */
     public function ArticleEditAdmin(Parameter $post, $articleId)
     {
         {
@@ -64,6 +115,12 @@ class ArticleDAO extends DAO
         }
     }
 
+    /**
+     * delete article by Id
+     *
+     * @param [type] $articleId
+     * @return void
+     */
     public function deleteArticle($articleId)
     {
         $sql = 'DELETE FROM articles WHERE id = ?';
