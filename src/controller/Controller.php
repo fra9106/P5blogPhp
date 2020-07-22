@@ -22,6 +22,7 @@ abstract class Controller
     protected $validation;
     protected $userssDAO;
     protected $messageHomeDAO;
+    
    
 
     public function __construct()

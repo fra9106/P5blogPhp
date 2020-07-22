@@ -14,6 +14,7 @@
                     <div class="card-body">
                         <h2>Fiche <?= $this->session->get('pseudo'); ?></h2>
                         <p>Bonjour <?= $this->session->get('pseudo'); ?></p>
+                        <img class="improfil" width="100" src="public/img/users/avatar/<?= htmlspecialchars($user->getAvatar()); ?>"/><br>
                         <strong>Pseudo : </strong><br>
                         <p class="card-text"><?= htmlspecialchars($user->getPseudo()); ?></p>
                         <strong>Mail : </strong><br>

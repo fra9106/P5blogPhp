@@ -1,6 +1,5 @@
 <?php $this->title = 'Modifier mes infos'; ?>
 <br>
-
 <div class="jumbotron text-center"><br><br>
    <h1>
         Modifie le profil de :  <?= $this->session->get('pseudo'); ?>
@@ -9,8 +8,17 @@
 <div class="container-fluid">
     <div class="row justify-content-center text-center">
         <div class="col-6"><br>
-                <div class="  card mb-4">
-                  <br> 
+                <div class="  card mb-4"><br>
+                <form method="POST" action="index.php?route=getAvatar" enctype="multipart/form-data">
+                     <div class="form-group">
+                        <label>Ajouter une photo de profil : </label>
+                     </div>
+                     <div class="form-group">
+                     <input type="file" name="avatar"><br><br>
+                     <input type="submit" name="submit"class="btn btn-success" value="Ajouter une photo"><br>
+                     <h4 class="red"><?= $this->session->show('update_picture'); ?></h4>
+                  </div>
+                  </form>
                <form method="POST" action="index.php?route=updatePseudo">
                <h4 class="red"><?= $this->session->show('update_pseudo'); ?></h4>
                   <div class="form-group"><br><br>

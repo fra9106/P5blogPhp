@@ -20,7 +20,8 @@ class UserssDAO extends DAO
         $user->setPseudo($row['pseudo']);
         $user->setMail($row['mail']);
         $user->setPass($row['pass']);
-        $user->setDroits($row)['droits'];
+        $user->setDroits($row['droits']);
+        $user->setAvatar($row['avatar']);
         $user->setCreateDate($row['create_date_fr']);
         return $user;
     }
@@ -34,8 +35,8 @@ class UserssDAO extends DAO
     public function register(Parameter $post)
     {
         $this->checkUser($post);
-        $sql = "INSERT INTO users(pseudo, mail, pass, droits, create_date) VALUES(?, ?, ?, ?, NOW())";
-        $this->createQuery($sql, [$post->get('pseudo'), $post->get('mail'), password_hash($post->get('mdp'), PASSWORD_DEFAULT),0]);
+        $sql = "INSERT INTO users(pseudo, mail, pass, droits, avatar, create_date) VALUES(?, ?, ?, ?, ?, NOW())";
+        $this->createQuery($sql, [$post->get('pseudo'), $post->get('mail'), password_hash($post->get('mdp'), PASSWORD_DEFAULT),0,'default.jpg']);
     }
 
     /**
@@ -81,7 +82,7 @@ class UserssDAO extends DAO
      */
     public function getUsersInfos($userId)
     {
-        $sql = 'SELECT id, pseudo, mail, pass, droits, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users WHERE id = ?';
+        $sql = 'SELECT id, pseudo, mail, pass, droits, avatar, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users WHERE id = ?';
         $result = $this->createQuery($sql, [$userId]);
         $user = $result->fetch();
         $result->closeCursor();
@@ -115,6 +116,20 @@ class UserssDAO extends DAO
         if($isUnique) {
             return '<br><p>Oups... ce mail existe déjà, merci d\'en choisir un autre...</p>';
         }
+    }
+
+    /**
+     * upload picture file
+     *
+     * @param [type] $newavatar
+     * @param [type] $sessId
+     * @return void
+     */
+    public function getNewAvatar($newavatar, $sessId)
+    {
+        $sql = 'UPDATE users SET avatar = ? WHERE id = ?';
+        $this->createQuery($sql,[$newavatar, $sessId]);
+        
     }
 
     /**
