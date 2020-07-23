@@ -178,7 +178,7 @@ class UserssDAO extends DAO
      */
     public function usersListAdmin()
     {
-        $sql = 'SELECT id, pseudo, mail, pass, droits, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users';
+        $sql = 'SELECT id, pseudo, mail, pass, droits, avatar, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users';
         $result = $this->createQuery($sql);
         $users = [];
         foreach($result as $row){

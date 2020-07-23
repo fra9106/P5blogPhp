@@ -116,7 +116,10 @@ class FrontController extends Controller
                 if($this->session->get('droits') === '1') {
                     return $this->view->render('administration');
                 }
-                return $this->view->render('home');
+                $users = $this->userssDAO->usersListAdmin();
+                return $this->view->render('home', [
+                    'users' => $users
+                ]);
             }
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
                 return $this->view->render('login', [

@@ -266,7 +266,7 @@ class BackController extends Controller
     public function getAvatar(Parameter $post, $sessId)
     {
         if($post->get('submit')) {
-            if (isset($_FILES['avatar']) and !empty($_FILES['avatar']['name'])){
+            if ($this->files->get('avatar') and !empty($this->files->getGet('avatar', 'name'))){
                 $tailleMax = 2097152;
                 $extensionsValides = array(
                     'jpg',
@@ -274,11 +274,11 @@ class BackController extends Controller
                     'gif',
                     'png'
                 );
-                if ($_FILES['avatar']['size'] <= $tailleMax){
-                    $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.') , 1));
+                if ($this->files->getGet('avatar', 'size') <= $tailleMax){
+                    $extensionUpload = strtolower(substr(strrchr($this->files->getGet('avatar', 'name'), '.') , 1));
                     if (in_array($extensionUpload, $extensionsValides)){
                         $chemin = "../public/img/users/avatar/" . $this->session->get('id') . "." . $extensionUpload;
-                        $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                        $resultat = move_uploaded_file($this->files->getGet('avatar', 'tmp_name'), $chemin);
                         if ($resultat){
                             $newavatar = $this->session->get('id')  . "." . $extensionUpload;
                             $sessId = $this->session->get('id');
@@ -287,14 +287,14 @@ class BackController extends Controller
                             return $this->view->render('editProfile', [
                                 'post' => $post
                             ]);
-                        }
-                        $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );
-                    }
-                      $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');
-                    }
-                    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');
-                }
-                $this->session->set('update_picture', 'Merci de selectionner une photo !');
+                        }else{
+                        $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );}
+                    }else{
+                      $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');}
+                    }else{
+                    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');}
+                }else{
+                $this->session->set('update_picture', 'Merci de selectionner une photo !');}
             }
             return $this->view->render('editProfile');
         }
