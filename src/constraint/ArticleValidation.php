@@ -13,6 +13,12 @@ class ArticleValidation extends Validation
         $this->constraint = new Constraint();
     }
 
+    /**
+     * check method (recover Parameter data, by all method)
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function check(Parameter $post)
     {
         foreach ($post->all() as $key => $value) {
@@ -21,6 +27,13 @@ class ArticleValidation extends Validation
         return $this->errors;
     }
 
+    /**
+     * check field method
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkField($name, $value)
     {
         if($name === 'title') {
@@ -38,6 +51,13 @@ class ArticleValidation extends Validation
         
     }
 
+    /**
+     * error method
+     *
+     * @param [type] $name
+     * @param [type] $error
+     * @return void
+     */
     private function addError($name, $error) {
         if($error) {
             $this->errors += [
@@ -46,6 +66,13 @@ class ArticleValidation extends Validation
         }
     }
 
+    /**
+     * check title field
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkTitle($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
@@ -59,6 +86,13 @@ class ArticleValidation extends Validation
         }
     }
 
+    /**
+     * check miniContent field
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkMiniContent($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
@@ -72,6 +106,13 @@ class ArticleValidation extends Validation
         }
     }
 
+    /**
+     * check content field 
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkContent($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
@@ -83,7 +124,5 @@ class ArticleValidation extends Validation
         if($this->constraint->maxLength($name, $value, 500)) {
             return $this->constraint->maxLength('content', $value, 500);
         }
-    }
-
-   
+    }  
 }

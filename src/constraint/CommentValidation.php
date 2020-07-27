@@ -13,6 +13,12 @@ class CommentValidation extends Validation
         $this->constraint = new Constraint();
     }
 
+    /**
+     * check method (recover Parameter data, by all method)
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function check(Parameter $post)
     {
         foreach ($post->all() as $key => $value) {
@@ -21,6 +27,13 @@ class CommentValidation extends Validation
         return $this->errors;
     }
 
+    /**
+     * check field method
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkField($name, $value)
     {
        
@@ -30,6 +43,13 @@ class CommentValidation extends Validation
         }
     }
 
+    /**
+     * error method
+     *
+     * @param [type] $name
+     * @param [type] $error
+     * @return void
+     */
     private function addError($name, $error) {
         if($error) {
             $this->errors += [
@@ -38,6 +58,13 @@ class CommentValidation extends Validation
         }
     }
 
+    /**
+     * check content comment field
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkContent($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {

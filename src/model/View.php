@@ -17,6 +17,13 @@ class View
         $this->session = $this->request->getSession();
     }
 
+    /**
+     * render function
+     *
+     * @param [type] $template
+     * @param array $data
+     * @return void
+     */
     public function render($template, $data = [])
     {
         $this->file = '../templates/'.$template.'.php';

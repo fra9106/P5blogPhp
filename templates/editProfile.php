@@ -8,7 +8,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center text-center">
         <div class="col-6"><br>
-                <div class="  card mb-4"><br>
+                <div class="card mb-4"><br>
                 <form method="POST" action="index.php?route=getAvatar" enctype="multipart/form-data">
                      <div class="form-group">
                         <label>Ajouter une photo de profil : </label>

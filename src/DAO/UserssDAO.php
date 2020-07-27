@@ -197,7 +197,7 @@ class UserssDAO extends DAO
      */
     public function confirmDeleteUserAdmin($userId)
     {
-        $sql = 'SELECT id, pseudo, mail, pass, droits, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users WHERE id = ?  '; 
+        $sql = 'SELECT id, pseudo, mail, pass, droits, avatar, DATE_FORMAT(create_date, \'%d/%m/%Y à %Hh%imin%ss\') AS create_date_fr FROM users WHERE id = ?  '; 
         $result = $this->createQuery($sql, [$userId]);
         $user = $result->fetch();
         $result->closeCursor();

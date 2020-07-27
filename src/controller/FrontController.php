@@ -6,11 +6,22 @@ use App\config\Parameter;
 
 class FrontController extends Controller
 {
-   public function home()
+
+    /**
+     * display home page
+     *
+     * @return void
+     */
+    public function home()
     {
         return $this->view->render('home');
     }
 
+    /**
+     * display all articles
+     *
+     * @return void
+     */
     public function articlesList()
     {
         $articles = $this->articleDAO->getArticles();
@@ -33,6 +44,12 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     * display article by id
+     *
+     * @param [type] $articleId
+     * @return void
+     */
     public function article($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
@@ -43,11 +60,24 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     * display legal page
+     *
+     * @return void
+     */
     public function legalPage()
 	{
         return $this->view->render('legalNotice');
     }
     
+    /**
+     * add comment
+     *
+     * @param Parameter $post
+     * @param [type] $sessId
+     * @param [type] $articleId
+     * @return void
+     */
     public function addComment(Parameter $post, $sessId, $articleId)
     {
         if($post->get('submit')) {
@@ -68,6 +98,12 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * user register
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function register(Parameter $post)
     {
         if($post->get('submit')) {
@@ -99,7 +135,13 @@ class FrontController extends Controller
         }
         return $this->view->render('register');
     }
-   
+ 
+    /**
+     * login
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function login(Parameter $post)
     {
         if($post->get('submit')) {
@@ -129,6 +171,11 @@ class FrontController extends Controller
         return $this->view->render('login');
     }
 
+    /**
+     * logout
+     *
+     * @return void
+     */
     public function logout()
     {
         $this->session->stop();

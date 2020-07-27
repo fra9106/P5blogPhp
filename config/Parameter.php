@@ -28,5 +28,4 @@ class Parameter
     {
         return $this->parameter;
     }
-
 }
