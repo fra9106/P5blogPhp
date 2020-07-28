@@ -13,6 +13,7 @@ class Request
         $this->get = new Parameter($_GET);
         $this->post = new Parameter($_POST);
         $this->session = new Session($_SESSION);
+        $this->files = new Files($_FILES);
     }
 
     /**
@@ -30,12 +31,17 @@ class Request
     {
         return $this->post;
     }
-
+    
     /**
      * @return Session
      */
     public function getSession()
     {
         return $this->session;
+    }
+
+    public function getFiles()
+    {
+        return $this->files;
     }
 }

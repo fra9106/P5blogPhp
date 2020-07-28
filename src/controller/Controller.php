@@ -22,6 +22,8 @@ abstract class Controller
     protected $validation;
     protected $userssDAO;
     protected $messageHomeDAO;
+    protected $files;
+    
    
 
     public function __construct()
@@ -36,5 +38,6 @@ abstract class Controller
         $this->validation = new Validation();
         $this->userssDAO = new UserssDAO();
         $this->messageHomeDAO = new ContactHomeDAO();
+        $this->files = $this->request->getFiles();
     }
 }

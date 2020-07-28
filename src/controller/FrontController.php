@@ -110,11 +110,17 @@ class FrontController extends Controller
                 $this->session->set('pseudo', $post->get('pseudo'));
                 $this->session->set('mail', $result['result']['mail']);
                 $this->session->set('droits', $result['result']['droits']);
+                $this->session->set('avatar', $result['result']['avatar']);
+                $this->session->set('avatar', $post->get('avatar'));
+               
                 if($this->session->get('droits') === '1') {
                     return $this->view->render('administration');
                 }
-                    return $this->view->render('home');
-                }
+                $users = $this->userssDAO->usersListAdmin();
+                return $this->view->render('home', [
+                    'users' => $users
+                ]);
+            }
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
                 return $this->view->render('login', [
                     'post'=> $post

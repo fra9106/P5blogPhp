@@ -121,6 +121,9 @@ class Router
                 elseif($route === 'profile'){
                     $this->backController->profile($this->request->getGet()->get('userId'));
                 }
+                elseif ($route === 'getAvatar'){
+                    $this->backController->getAvatar($this->request->getPost('avatar'),$this->session->get('id'));
+                }
                 elseif ($route === 'editProfile'){
                     $this->backController->editProfile($this->request->getGet()->get('id'));
                 }

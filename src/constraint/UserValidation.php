@@ -43,6 +43,7 @@ class UserValidation extends Validation
             $error = $this->checkPassword($name, $value);
             $this->addError($name, $error);
         }
+        
     }
 
     private function addError($name, $error) {

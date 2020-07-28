@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf " crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    
-</head>
-
+    </head>
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <a class="navbar-brand" href="index.php?action=homePage">Mon Blog</a>
@@ -48,13 +46,16 @@
                 <?php endif ?>
             </ul>
             <span class=" reveal-dev text-white"><?= $this->session->get('pseudo'); ?><br></span>
-            <img class=" reveal-dev pic " width="50" src="public/img/franck.jpg" alt="photo franck">
+            <?php if ($this->session->get('id')) : ?>
+                <img class=" reveal-dev pic " width="50" src="public/img/users/avatar/<?= $this->session->get('id');?>"alt="photo profil" >
+                <?php else: ?>  
+            <img class=" reveal-dev pic " width="50" src="public/img/franck.jpg" alt="photo webmaster">
+            <?php endif ?>
         </div>
     </nav>
     <div id="content">
         <?= $content ?>
     </div>
-
     <footer class="footer text-center text-white footer-dark bg-primary">
         <div class="container">
             <div class="row">

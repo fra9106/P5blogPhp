@@ -9,6 +9,8 @@ class User
     private $pseudo;
     private $mail;
     private $pass;
+    private $droits;
+    private $avatar;
     private $create_date;
 
     
@@ -60,7 +62,17 @@ class User
 
     public function setDroits($droits)
     {
-        $this->pass = $droits;
+        $this->droits = $droits;
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
     }
 
     public function getCreateDate()
