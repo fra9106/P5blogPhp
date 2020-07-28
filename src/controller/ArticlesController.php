@@ -21,12 +21,12 @@ class ArticlesController extends Controller
                 $this->session->set('add_article', 'Nouvel article ajouté !');
                 return header('Location:index.php?route=articlesListAdmin');
             }
-                return $this->view->render('add_article', [
+                return $this->view->render('public/add_article', [
                 'post' => $post,
                 'errors' => $errors
             ]);
         }
-        return $this->view->render('add_article');
+        return $this->view->render('public/add_article');
     }
 
     /**
@@ -36,7 +36,7 @@ class ArticlesController extends Controller
      */
     public function articlesListAdmin(){
         $articles = $this->articleDAO->getArticles();
-        return $this->view->render('articlesListAdmin', [
+        return $this->view->render('admin/articlesListAdmin', [
            'articles' => $articles
         ]);
     }
@@ -55,11 +55,11 @@ class ArticlesController extends Controller
             $this->articleDAO->articleEditAdmin($post, $articleId);
             $this->session->set('articlesListAdmin', 'Article modifié !');
             $articles = $this->articleDAO->getArticles();
-            return $this->view->render('articlesListAdmin', [
+            return $this->view->render('admin/articlesListAdmin', [
                 'articles' => $articles
             ]);
         }    
-        return $this->view->render('edit_ArticleAdmin', [
+        return $this->view->render('admin/edit_ArticleAdmin', [
             'article' => $article
         ]);
     }
@@ -75,7 +75,7 @@ class ArticlesController extends Controller
         $this->articleDAO->deleteArticle($articleId);
         $this->session->set('delete_articleAdmin', 'Article supprimé !');
         $articles = $this->articleDAO->getArticles();
-        return $this->view->render('articlesListAdmin', [
+        return $this->view->render('admin/articlesListAdmin', [
            'articles' => $articles
         ]);
     }
@@ -88,7 +88,7 @@ class ArticlesController extends Controller
     public function articlesList()
     {
         $articles = $this->articleDAO->getArticles();
-        return $this->view->render('articlesList', [
+        return $this->view->render('public/articlesList', [
            'articles' => $articles
         ]);
     }
@@ -102,7 +102,7 @@ class ArticlesController extends Controller
     public function articlesByCat($catId)
     {
         $articles = $this->articleDAO->articlesByCat($catId);
-        return $this->view->render('articlesList', [
+        return $this->view->render('public/articlesList', [
            'articles' => $articles
         ]);
     }
@@ -117,7 +117,7 @@ class ArticlesController extends Controller
     {
         $article = $this->articleDAO->getArticle($articleId);
         $comments = $this->commentDAO->getCommentsArticle($articleId);
-        return $this->view->render('single', [
+        return $this->view->render('public/single', [
             'article' => $article,
             'comments' => $comments
         ]);

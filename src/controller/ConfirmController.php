@@ -13,7 +13,7 @@ class ConfirmController extends Controller
     public function confirmDeleteArticle($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
-        return $this->view->render('confirmDeleteArticle', [
+        return $this->view->render('errors/confirmDeleteArticle', [
             'article' => $article
         ]);
     }
@@ -27,7 +27,7 @@ class ConfirmController extends Controller
     public function confirmDeleteComment($commentId)
     {
         $comment = $this->commentDAO->getComment($commentId);
-        return $this->view->render('confirmDeleteComment', [
+        return $this->view->render('errors/confirmDeleteComment', [
             'comment' => $comment
         ]);
     }
@@ -39,7 +39,7 @@ class ConfirmController extends Controller
      */
     public function confirmDeleteAccount()
     {
-        return $this->view->render('deleteAccountConfirm');
+        return $this->view->render('errors/confirmDeleteUserAccount');
     }
 
     /**
@@ -51,7 +51,7 @@ class ConfirmController extends Controller
     public function confirmDeleteUserAdmin($userId)
     {
         $user = $this->userssDAO->getUsersInfos($userId);
-        return $this->view->render('confirmDeleteUserAdmin', [
+        return $this->view->render('errors/confirmDeleteUserAdmin', [
             'user' => $user
         ]);
     }
@@ -65,7 +65,7 @@ class ConfirmController extends Controller
     public function confirmDeleteMessageAdmin($messageId)
     {
         $message = $this->messageHomeDAO->messageAdmin($messageId);
-        return $this->view->render('confirmDeleteMessageAdmin', [
+        return $this->view->render('errors/confirmDeleteMessageAdmin', [
             'message' => $message
         ]);
     }

@@ -42,7 +42,7 @@ class HomeController extends Controller
     public function messagesListAdmin()
     {
         $messages = $this->messageHomeDAO->messagesListAdmin();
-        return $this->view->render('messagesListAdmin', [
+        return $this->view->render('admin/messagesListAdmin', [
            'messages' => $messages
         ]);
     }
@@ -56,7 +56,7 @@ class HomeController extends Controller
     public function messageAdmin($messageId)
     {
         $message = $this->messageHomeDAO->messageAdmin($messageId);
-        return $this->view->render('messageAdmin', [
+        return $this->view->render('admin/messageAdmin', [
             'message' => $message
         ]);
     }
@@ -72,7 +72,7 @@ class HomeController extends Controller
         $this->messageHomeDAO->deleteMessageAdmin($messageId);
         $this->session->set('delete_messageAdmin', 'Message supprimé !');
         $messages = $this->messageHomeDAO->messagesListAdmin();
-        return $this->view->render('messagesListAdmin', [
+        return $this->view->render('admin/messagesListAdmin', [
            'messages' => $messages
         ]);
     }
@@ -84,7 +84,7 @@ class HomeController extends Controller
      */
     public function legalPage()
 	{
-        return $this->view->render('legalNotice');
+        return $this->view->render('public/legalNotice');
     }
 
     /**
@@ -94,6 +94,6 @@ class HomeController extends Controller
      */
     public function administration()
     {
-        return $this->view->render('administration');
+        return $this->view->render('admin/administration');
     }
 }

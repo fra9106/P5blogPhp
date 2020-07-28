@@ -16,7 +16,7 @@ class UsersController extends Controller
     {  
         $userId=$this->session->get('id');
         $user=$this->userssDAO->getUsersInfos($userId);
-        return $this->view->render('profile', [
+        return $this->view->render('users/profile', [
             'user' => $user
         ]);
     }
@@ -35,12 +35,12 @@ class UsersController extends Controller
             $this->userssDAO->updatePseudo($post, $this->session->get('id'));
             $this->session->set('update_pseudo', 'Le changement de votre pseudo à bien été pris en compte et apparaîtra à votre prochaine connexion !');
         }
-            return $this->view->render('editProfile', [
+            return $this->view->render('users/editProfile', [
                 'post' => $post,
                 'errors' => $errors
             ]);
         }
-        return $this->view->render('editProfile');
+        return $this->view->render('users/editProfile');
     
     }
 
@@ -61,12 +61,12 @@ class UsersController extends Controller
             $this->userssDAO->updateMail($post, $this->session->get('id'));
             $this->session->set('update_mail', 'Le changement de votre mail à bien été pris en compte et apparaîtra à votre prochaine connexion !');
             }
-           return $this->view->render('editProfile', [
+           return $this->view->render('users/editProfile', [
                 'post' => $post,
                 'errors' => $errors
            ]);
         }
-        return $this->view->render('editProfile');
+        return $this->view->render('users/editProfile');
     }
 
     /**
@@ -83,12 +83,12 @@ class UsersController extends Controller
             $this->userssDAO->updatePass($post, $this->session->get('id'));
             $this->session->set('update_password', 'Le changement de votre mot de passe à bien été pris en compte !');
             }
-            return $this->view->render('editProfile', [
+            return $this->view->render('users/editProfile', [
                 'post' => $post,
                 'errors' => $errors
             ]);
         }
-        return $this->view->render('editProfile');
+        return $this->view->render('users/editProfile');
     }
 
     /**
@@ -99,7 +99,7 @@ class UsersController extends Controller
     public function editProfile()
     {  
         $this->session->get('id');
-        return $this->view->render('editProfile');
+        return $this->view->render('users/editProfile');
     }
 
     /**
@@ -111,7 +111,7 @@ class UsersController extends Controller
     {
         $this->userssDAO->deleteUserAccount($this->session->get('pseudo'));
         $this->session->stop();
-        return $this->view->render('home');
+        return $this->view->render('home/home');
     }
 
     /**
@@ -122,7 +122,7 @@ class UsersController extends Controller
     public function usersListAdmin()
     {
         $users = $this->userssDAO->usersListAdmin();
-        return $this->view->render('usersListAdmin', [
+        return $this->view->render('admin/usersListAdmin', [
             'users' => $users
         ]);
     }
@@ -138,7 +138,7 @@ class UsersController extends Controller
         $this->userssDAO->deleteUserAccountAdmin($userId);
         $this->session->set('delete_user', 'Compte supprimé !');
         $users = $this->userssDAO->usersListAdmin();
-        return $this->view->render('usersListAdmin', [
+        return $this->view->render('admin/usersListAdmin', [
             'users' => $users
         ]);
     }
@@ -171,7 +171,7 @@ class UsersController extends Controller
                                 $sessId = $this->session->get('id');
                                 $this->userssDAO->getNewAvatar($newavatar, $sessId);
                                 $this->session->set('update_pseudo', 'Le changement de votre photo à bien été pris en compte !');
-                                return $this->view->render('editProfile', [
+                                return $this->view->render('users/editProfile', [
                                     'post' => $post
                                 ]);
                             }else{
@@ -187,6 +187,6 @@ class UsersController extends Controller
                 $this->session->set('update_picture', 'Merci de selectionner une photo !');
             }
         }
-        return $this->view->render('editProfile');
+        return $this->view->render('users/editProfile');
     }   
 }

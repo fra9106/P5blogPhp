@@ -25,7 +25,7 @@ class CommentsController extends Controller
             }
             $article = $this->articleDAO->getArticle($articleId);
             $comments = $this->commentDAO->getCommentsArticle($articleId);
-            return $this->view->render('single', [
+            return $this->view->render('public/single', [
                 'article' => $article,
                 'comments' => $comments,
                 'post' => $post,
@@ -45,7 +45,7 @@ class CommentsController extends Controller
         $this->commentDAO->validComment($commentId);
         $this->session->set('valid_comment', 'Commentaire validé !');
         $comments = $this->commentDAO->getComments();
-        return $this->view->render('commentsListAdmin', [
+        return $this->view->render('admin/commentsListAdmin', [
            'comments' => $comments
         ]);
     }
@@ -57,7 +57,7 @@ class CommentsController extends Controller
      */
     public function commentsListAdmin(){
         $comments = $this->commentDAO->getComments();
-        return $this->view->render('commentsListAdmin', [
+        return $this->view->render('admin/commentsListAdmin', [
            'comments' => $comments
         ]);
     }
@@ -73,7 +73,7 @@ class CommentsController extends Controller
         $this->commentDAO->deleteComment($commentId);
         $this->session->set('delete_commentAdmin', 'Commentaire supprimé !');
         $comments = $this->commentDAO->getComments();
-        return $this->view->render('commentsListAdmin', [
+        return $this->view->render('admin/commentsListAdmin', [
            'comments' => $comments
         ]);
     }

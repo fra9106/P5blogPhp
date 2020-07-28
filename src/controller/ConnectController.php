@@ -26,19 +26,19 @@ class ConnectController extends Controller
                 $this->session->set('avatar', $post->get('avatar'));
                
                 if($this->session->get('droits') === '1') {
-                    return $this->view->render('administration');
+                    return $this->view->render('admin/administration');
                 }
                 $users = $this->userssDAO->usersListAdmin();
-                return $this->view->render('home', [
+                return $this->view->render('home/home', [
                     'users' => $users
                 ]);
             }
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects !');
-                return $this->view->render('login', [
+                return $this->view->render('connect/login', [
                     'post'=> $post
                 ]);
         }
-        return $this->view->render('login');
+        return $this->view->render('connect/login');
     }
 
     /**
@@ -75,7 +75,7 @@ class ConnectController extends Controller
                     $this->connectDAO->register($post);
                     $this->session->set('register', 'Votre inscription a bien été prise en compte !');
                 }
-                return $this->view->render('register', [
+                return $this->view->render('connect/register', [
                     'post' => $post,
                     'errors' => $errors
                     ]);
