@@ -81,10 +81,14 @@ class ConnectController extends Controller
                     ]);
                 }
                 $this->session->set('register', 'Adresse mail non valide !');
+            
+            return $this->view->render('connect/register', [
+                'post' => $post,
+                'errors' => $errors
+                ]);
             }
-            else{
-                $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
-            }
+            $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
+        
         }
         return $this->view->render('connect/register');
     }
