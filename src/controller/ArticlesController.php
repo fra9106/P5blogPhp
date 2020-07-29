@@ -19,8 +19,11 @@ class ArticlesController extends Controller
            if(!$errors) {
                 $this->articleDAO->addArticle($post, $this->session->get('id'));
                 $this->session->set('add_article', 'Nouvel article ajouté !');
-                return header('Location:index.php?route=articlesListAdmin');
-            }
+                $articles = $this->articleDAO->getArticles();
+                return $this->view->render('admin/articlesListAdmin', [
+                    'articles' => $articles
+                    ]);    
+                }
                 return $this->view->render('public/add_article', [
                 'post' => $post,
                 'errors' => $errors

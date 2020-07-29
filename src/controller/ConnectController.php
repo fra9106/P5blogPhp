@@ -29,7 +29,7 @@ class ConnectController extends Controller
                     return $this->view->render('admin/administration');
                 }
                 $users = $this->userssDAO->usersListAdmin();
-                return $this->view->render('home/home', [
+                return $this->view->render('home', [
                     'users' => $users
                 ]);
             }
@@ -80,14 +80,12 @@ class ConnectController extends Controller
                     'errors' => $errors
                     ]);
                 }
-                else{
-                    $this->session->set('register', 'Adresse mail non valide !');
-                }
+                $this->session->set('register', 'Adresse mail non valide !');
             }
             else{
                 $this->session->set('register', 'Veuillez taper deux mots de passe identiques !');
             }
         }
-        return $this->view->render('register');
+        return $this->view->render('connect/register');
     }
 }

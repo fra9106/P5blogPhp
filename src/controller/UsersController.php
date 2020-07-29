@@ -174,9 +174,8 @@ class UsersController extends Controller
                                 return $this->view->render('users/editProfile', [
                                     'post' => $post
                                 ]);
-                            }else{
+                            }
                             $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );
-                        }
                     }else{
                         $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');
                     }
