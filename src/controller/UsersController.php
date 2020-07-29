@@ -111,7 +111,7 @@ class UsersController extends Controller
     {
         $this->userssDAO->deleteUserAccount($this->session->get('pseudo'));
         $this->session->stop();
-        return $this->view->render('home/home');
+        return $this->view->render('home');
     }
 
     /**
@@ -176,15 +176,22 @@ class UsersController extends Controller
                                 ]);
                             }
                             $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );
-                    }else{
-                        $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');
-                    }
-                }else{
-                    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');
-                }
-            }else{
-                $this->session->set('update_picture', 'Merci de selectionner une photo !');
-            }
+                   
+                    return $this->view->render('users/editProfile', [
+                        'post' => $post
+                    ]);
+                }   $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');
+                    
+                return $this->view->render('users/editProfile', [
+                    'post' => $post
+                ]);
+            }    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');
+                
+            return $this->view->render('users/editProfile', [
+                'post' => $post
+            ]);
+        }    $this->session->set('update_picture', 'Merci de selectionner une photo !');
+            
         }
         return $this->view->render('users/editProfile');
     }   

@@ -75,7 +75,7 @@ class ConnectController extends Controller
                     $this->connectDAO->register($post);
                     $this->session->set('register', 'Votre inscription a bien été prise en compte !');
                 }
-                return $this->view->render('connect/register', [
+                return $this->view->render('connect/login', [
                     'post' => $post,
                     'errors' => $errors
                     ]);
