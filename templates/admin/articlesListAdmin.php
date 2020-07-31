@@ -1,7 +1,5 @@
 <?php $this->title = "Liste des articles Admin"; ?>
 <div class="articlewrite">
-    <br>
-    
     <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
     <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=commentsListAdmin">Gestion des commentaires</a></h3>
@@ -14,16 +12,16 @@
         <h4 class="red"><?= $this->session->show('delete_articleAdmin'); ?></h4>
         <h4 class="red"><?= $this->session->show('add_article'); ?></h4>
         <br><br>
+        <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Catégorie</th>
-                    <th>Titre</th>
-                    <th>Chapô</th>
-                    <th>Contenu</th>
-                    <th>Auteur</th>
-                    <th>Date de création</th>
-                    <th>Date de modification</th>
+                    <th>TITRE</th>
+                    <th>CONTENU</th>
+                    <th>DATE CREATION</th>
+                    <th>DATE MODIFICATION</th>
+                    <th>MODIFIER</th>
+                    <th>SUPPRIMER</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,11 +30,9 @@
             {
             ?>
             <tr>
-                <td><?= htmlspecialchars($article->getCategory());?></td>
+                
                 <td><?= htmlspecialchars($article->getTitle());?></td>
-                <td><?= htmlspecialchars($article->getMiniContent());?></td>
                 <td><?= $article->getContent();?></td>
-                <td><?= htmlspecialchars($article->getPseudo());?></td>
                 <td><?= htmlspecialchars($article->getCreationDate());?></td>
                 <td><?= htmlspecialchars($article->getUpdateDate());?></td>
                 <td>
@@ -52,5 +48,6 @@
             ?>
         </tbody>
         </table>
+        </div>
     </div><br><br>
 </div>

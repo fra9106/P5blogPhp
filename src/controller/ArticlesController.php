@@ -24,12 +24,12 @@ class ArticlesController extends Controller
                     'articles' => $articles
                     ]);    
                 }
-                return $this->view->render('public/add_article', [
+                return $this->view->render('admin/add_article', [
                 'post' => $post,
                 'errors' => $errors
             ]);
         }
-        return $this->view->render('public/add_article');
+        return $this->view->render('admin/add_article');
     }
 
     /**

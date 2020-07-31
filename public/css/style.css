@@ -1,33 +1,43 @@
+* {
+    margin:0;
+    padding:0;
+}
+
 html,
 body {
-
-    min-height: 100%;
+    height: 100%;
 }
 
 body {
-
+    width: 100%;
     text-align: center !important;
     overflow-x: hidden;
-    background-color: #ede7e3 !important;
+    background-color: whitesmoke !important;
 }
 
-.red{
+.red {
     color: red;
 }
 
-.pseudosession{
-
+.pseudosession {
     font-size: 25px;
     margin-top: -20px;
+    color :#18BC9C;
+}
+
+#content {
+    min-height:100%;
+    margin:0 auto;
+    position:relative;
 }
 
 footer {
-
     padding-top: 30px;
     padding-bottom: 30px;
     position: absolute;
     width: 100%;
     margin-bottom: 0;
+    margin-top: -50px;
 }
 
 .scroll-to-top a {
@@ -58,8 +68,22 @@ footer {
 }
 
 .slider {
+    background: url('../img/photosWeb/home2.jpg')center center/cover no-repeat !important;
+    width:980px;
+}
 
-    background: url('../img/buro.png')center center/cover no-repeat !important;
+#homeSreen {
+    margin-top: 50px;
+}
+
+.bienvenu {
+    font-family: 'Pinyon Script', serif;
+    color: #C89446; 
+}
+
+.bienvenu {
+    line-height: 325px;
+    margin-bottom: -130px;
 }
 
 .fa-desktop {
@@ -67,13 +91,8 @@ footer {
     margin-bottom: 30px;
 }
 
-.bienvenu {
-    font-family: 'Pinyon Script', serif;
-    color: #C89446;
-}
-
 .articlewrite {
-    margin-top: 150px;
+    margin-top: 250px;
 }
 
 .masthead {
@@ -86,13 +105,10 @@ footer {
 }
 
 .accroche {
-    font-size: 18px;
-    
-}
-
-.bg.prim {
-
-    background: url('../img/buro2.png')center center/cover no-repeat;
+    font-size: 24px;
+    color: #18BC9C;
+    margin-top: 90px; 
+    background-color: whitesmoke;
 }
 
 .fa-envelope-open {
@@ -114,7 +130,6 @@ footer {
 }
 
 .register {
-
     margin-top: 250px;
 }
 
@@ -129,16 +144,49 @@ footer {
     color: white;
 }
 
-@media only screen and (min-width: 700px) {
+.error {
+    font-size: 50px;
+    color: red;
+    margin-top: 200px;
+    background-color: whitesmoke;
+    position: absolute;
+    margin-left: 340px;
+}
+
+@media only screen and (min-width: 1100px) {
+
+     .slider {
+        height: 1300px;
+        width: 1580px;
+    }
+
+    .error {
+        margin-left: 630px;
+        margin-top: 350px;
+    }
+
+    .accroche {
+        font-size: 18px;
+        color: white;
+        margin-top: -20px;
+        background-color: transparent;
+    }
 
     .bienvenu {
-
         font-size: 50px;
-        line-height: 250px;
-        margin-bottom: 240px;
+        line-height: 455px;
+        margin-bottom: -190px;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+
+    .slider {
+        height: 1300px;
+        width: 1920px;
+    }
+    .error {
+        margin-left: 800px;
     }
 
-    .container {
-        margin-bottom: -15px;
-    }
 }
