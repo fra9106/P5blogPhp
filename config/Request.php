@@ -7,6 +7,7 @@ class Request
     private $get;
     private $post;
     private $session;
+    private $files;
 
     public function __construct()
     {
@@ -40,6 +41,9 @@ class Request
         return $this->session;
     }
 
+    /**
+     * @return Files
+     */
     public function getFiles()
     {
         return $this->files;

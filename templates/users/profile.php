@@ -9,7 +9,7 @@
 </div><br>
 <div class="container">
         <div class="row justify-content-center text-center">
-            <div class="col-6"><br>
+            <div class="col-sm-12 col-md-6"><br>
                 <div class=" card mb-4">
                     <div class="card-body">
                         <h2>Fiche <?= $this->session->get('pseudo'); ?></h2>

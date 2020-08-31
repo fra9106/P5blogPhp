@@ -6,9 +6,9 @@
     </h2>
     <p>Bienvenue sur la page des articles de mon blog. Ceux-ci sont soit classé par ces trois catégories ou bien en liste complète. Bonne lecture... </p>
     <div class="btn-group center">
-        <a href="index.php?route=articlesByCat&id_category=1"><button type="button" class="btn btn-lg btn-success">Activités</button></a>&nbsp;&nbsp;
-        <a href="index.php?route=articlesByCat&id_category=2"><button type="button" class="btn btn-lg btn-success">Objectifs</button></a>&nbsp;&nbsp;
-        <a href="index.php?route=articlesByCat&id_category=3"><button type="button" class="btn btn-lg btn-success">Astuces</button></a>
+        <a href="index.php?route=articlesByCat&id_category=1"><button type="button" class="btn btn-md btn-success">Activités</button></a>&nbsp;&nbsp;
+        <a href="index.php?route=articlesByCat&id_category=2"><button type="button" class="btn btn-md btn-success">Objectifs</button></a>&nbsp;&nbsp;
+        <a href="index.php?route=articlesByCat&id_category=3"><button type="button" class="btn btn-md btn-success">Astuces</button></a>
     </div>
 </div>
     <div class="container">

@@ -8,7 +8,7 @@
     <br>
     <h1>Rédaction Articles : </h1>
     <div class="row justify-content-center">
-        <div class="col-sm-6">
+        <div class="col-sm-12 col-md-6">
             <form class="form " method="post" action="index.php?route=addArticle">
             <div class="control-group col-sm-12">
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">

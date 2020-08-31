@@ -1,4 +1,5 @@
 <?php $this->title = "Edition Article Admin"; ?>
+<br>
 <div class="container-fluid"><br><br><br><br>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
     <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
@@ -9,7 +10,7 @@
     <br />
     <h1>Modifier Articles : </h1>
    <div class="row justify-content-center">
-        <div class="col-sm-6">
+        <div class="col-sm-12 col-md-6">
             <form class="form " method="post" action="index.php?route=editArticleAdmin&articleId=<?= htmlspecialchars($article->getId()); ?>">
                 <div class="control-group col-sm-12 ">
                     <div class="form-group floating-label-form-group controls mb-0 pb-2">

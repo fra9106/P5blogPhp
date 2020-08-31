@@ -7,7 +7,7 @@
 </div>
 <div class="container">
     <div class="row justify-content-center text-center">
-        <div class="col-6"><br>
+        <div class="col-12"><br>
             <div class=" card mb-4">
                 <div class="card-body">
                     <strong>Chapô :</strong><br><br>
@@ -42,7 +42,7 @@
             </form>
         </div>
         <?php else: ?>
-        <h3 class="error">Pour l'ajout d'un commentaire, veuillez vous connecter !</h3>
+        <p class="red">Pour l'ajout d'un commentaire, veuillez vous connecter !</p>
         <?php endif ?>
         <div class="container">
             <h2>Vos commentaires :</h2>
@@ -51,7 +51,7 @@
         foreach ($comments as $comment)
         {
             ?>
-            <div class="col-6"><br>
+            <div class="col-sm-12 col-md-6"><br>
                     <div class=" card mb-4">
                         <div class="card-body">
                             <p><em>Envoyé le : <?= htmlspecialchars($comment->getCreationDate());?></em></p>
@@ -62,8 +62,10 @@
                     </div>
                 </div>
                 <?php
-                }
-                ?>
+        }
+        if (empty( $comments )):?>
+            <p class="noComments">Soyez le premier à laisser un commentaire sur cet article</p>
+            <?php endif?>
             </div>
         </div>
     </div>

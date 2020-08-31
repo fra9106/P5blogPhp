@@ -33,6 +33,8 @@ sr.reveal('.reveal-dev', {//un developpeur... photo
 	
 });
 
+sr.reveal('.rev'); // anim admin
+
 sr.reveal('.reveal-fas', { // icon pc
 	origin: 'top',
 	distance: '200px',

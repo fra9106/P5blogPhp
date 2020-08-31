@@ -1,6 +1,9 @@
 <?php $this->title = "Liste des messages Admin"; ?>
+<br>
 <div class="articlewrite">
-    <br>
+    <h4 class="red"><?= $this->session->show('message_ListAdmin'); ?></h4>
+    <h4 class="red"><?= $this->session->show('delete_messageAdmin'); ?></h4>
+    <h4 class="red"><?= $this->session->show('add_message'); ?></h4>
     <h3><a href="index.php?route=administration">Accueil Admin</a></h3>
     <h3><a href="index.php?route=addArticle">Rédiger un article</a></h3>
     <h3><a href="index.php?route=articlesListAdmin">Gestion des articles</a></h3>
@@ -9,10 +12,8 @@
     <br>
     <div class="container mt-4">
         <h1>Messages :</h1><br>
-        <h4 class="red"><?= $this->session->show('message_ListAdmin'); ?></h4>
-        <h4 class="red"><?= $this->session->show('delete_messageAdmin'); ?></h4>
-        <h4 class="red"><?= $this->session->show('add_message'); ?></h4>
         <br><br>
+        <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -46,5 +47,6 @@
             ?>
         </tbody>
         </table>
+    </div>
     </div><br><br>
 </div>

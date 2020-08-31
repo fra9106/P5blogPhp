@@ -1,9 +1,9 @@
 <?php $this->title = "Home"; ?>
 <header class=" masthead bg-primary slider text-white text-center">
     <div class="container align-items-center ">
-        <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2>
-       
-        <div class="reveal-fas" >
+        <p class="bienvenu reveal">Bienvenu sur mon blog</p>
+        <h4 class="red"><?= $this->session->show('add_message'); ?></h4><br>
+        <div class="reveal-fas">
             <p class="pseudosession">
                 <?= $this->session->show('login'); ?>
                 <?= $this->session->show('logout'); ?>
@@ -18,12 +18,12 @@
             </div>
         </div>
         <p class=" accroche reveal-dev "> Un développeur d'application PHP/SYMFONY près de chez vous ! </p>
-        <div class="text-center mt-4">
-            <a class=" reveal1 btn btn-secondary btn-xl" href="https://github.com/fra9106">
+        <div class="text-center">
+            <a class=" reveal1 btn btn-secondary btn-xl" href="https://github.com/fra9106/P5blogPhp">
                 <i class="fab fa-github"></i>
                 Mon github!
-            </a>&nbsp;&nbsp;&nbsp;
-            <a class="reveal2 btn btn-secondary btn-xl" href="public/pdf/CV_Boutot_Franck" target="_blank">
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="reveal2 btn btn-secondary btn-xl" href="public/pdf/CV_Boutot_Franck.pdf" target="_blank">
                 <i class="fas fa-download"></i>
                 Mon CV!
             </a>
