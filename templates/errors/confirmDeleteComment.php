@@ -7,7 +7,7 @@
 <br><br>
 <div class="container">
     <div class="row justify-content-center text-center">
-        <div class="col-6"><br>
+        <div class="col-sm-12 col-md-6"><br>
             <div class=" card mb-4">
                 <div class="card-body">
                     <p class="card-text">Voulez-vous vraiment supprimer le commentaire : <br><?= htmlspecialchars($comment->getContent());?>  ?</p>

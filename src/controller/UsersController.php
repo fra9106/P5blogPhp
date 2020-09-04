@@ -153,7 +153,10 @@ class UsersController extends Controller
     public function getAvatar(Parameter $post, $sessId)
     {
         if($post->get('submit')) {
-            if ($this->files->get('avatar') and !empty($this->files->getGet('avatar', 'name'))){
+            $get = $this->files->get('avatar');
+            $getget = $this->files->getGet('avatar', 'name');
+            //var_dump($get, $getget); die;
+            if ( $get and !empty($getget )){
                 $tailleMax = 2097152;
                 $extensionsValides = array(
                     'jpg',
