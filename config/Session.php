@@ -41,7 +41,7 @@ class Session
     public function stop()
     {
         session_destroy();
-        header('Location:index.php');
+        header('Location:./');
     }
     
     public function start()

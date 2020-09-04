@@ -2,12 +2,15 @@
 <header class=" masthead bg-primary slider text-white text-center">
     <div class="container align-items-center ">
         <h2 class="bienvenu reveal">Bienvenu sur mon blog</h2>
-        <p class="pseudosession"><?= $this->session->show('logout'); ?></p>
+       
         <div class="reveal-fas" >
             <p class="pseudosession">
                 <?= $this->session->show('login'); ?>
-                <?= $this->session->get('pseudo'); ?></p>
+                <?= $this->session->show('logout'); ?>
+                <?= $this->session->get('pseudo'); ?>
+            </p>
             </div>
+            <div id="homeSreen">
             <h1 class=" nom reveal-name">Franck Boutot</h1><span class="webDeveloper">Web developer</span>
             <div class="divider-custom divider-light ">
             <div class="divider-custom-icon">
@@ -24,6 +27,7 @@
                 <i class="fas fa-download"></i>
                 Mon CV!
             </a>
+        </div>
         </div>
     </div>
 </header>

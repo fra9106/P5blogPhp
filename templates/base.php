@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf " crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
-    </head>
+</head>
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <a class="navbar-brand" href="index.php?action=homePage">Mon Blog</a>
+        <a class="navbar-brand" href="./">Mon Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=homePage"><span><i class="fa fa-home"></i> Accueil</span></a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="./"><span><i class="fa fa-home"></i> Accueil</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?route=articlesList">Articles</a>
@@ -55,7 +55,7 @@
     </nav>
     <div id="content">
         <?= $content ?>
-    </div>
+    </div><br><br>
     <footer class="footer text-center text-white footer-dark bg-primary">
         <div class="container">
             <div class="row">
@@ -98,7 +98,7 @@
         </div>
     </footer>
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-to-top d-lg-none position-fixed ">
+    <div class="scroll-to-top  position-fixed ">
         <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>

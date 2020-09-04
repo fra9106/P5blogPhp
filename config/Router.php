@@ -1,9 +1,13 @@
 <?php
 
 namespace App\config;
-use App\src\controller\BackController;
+use App\src\controller\UsersController;
 use App\src\controller\ErrorController;
-use App\src\controller\FrontController;
+use App\src\controller\HomeController;
+use App\src\controller\ConfirmController;
+use App\src\controller\ArticlesController;
+use App\src\controller\CommentsController;
+use App\src\controller\ConnectController;
 use App\src\model\View;
 use Exception;
 
@@ -12,15 +16,25 @@ class Router
     private $frontController;
     private $errorController;
     private $backController;
+    private $confirmController;
+    private $articlesController;
+    private $commentsController;
+    private $connectController;
+    private $homeController;
     private $request;
     protected $view;
 
     public function __construct()
     {
         $this->request = new Request();
-        $this->frontController = new FrontController();
-        $this->backController = new BackController();
+        $this->frontController = new HomeController();
+        $this->backController = new UsersController();
         $this->errorController = new ErrorController();
+        $this->confirmController = new ConfirmController();
+        $this->articlesController = new ArticlesController();
+        $this->commentsController = new CommentsController();
+        $this->connectController = new ConnectController();
+        $this->homeController = new HomeController();
         $this->session = $this->request->getSession();
         $this->view = new View();
     }
@@ -32,28 +46,28 @@ class Router
             if(isset($route))
             {
                 if($route === 'article'){
-                    $this->frontController->article($this->request->getGet()->get('articleId'));
+                    $this->articlesController->article($this->request->getGet()->get('articleId'));
                 }
                 elseif ($route === 'addArticle'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->addArticle($this->request->getPost());
+                    $this->articlesController->addArticle($this->request->getPost());
                 }
                 elseif ($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(),$this ->session->get('id'), $this->request->getGet()->get('articleId'));
+                    $this->commentsController->addComment($this->request->getPost(),$this ->session->get('id'), $this->request->getGet()->get('articleId'));
                 }
                 elseif ($route === 'commentsListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->commentsListAdmin();
+                    $this->commentsController->commentsListAdmin();
                 }
                 elseif($route === 'validComment'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->validComment($this->request->getGet()->get('commentId'));
+                    $this->commentsController->validComment($this->request->getGet()->get('commentId'));
                 }
                 elseif ($route=== 'usersListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
@@ -62,7 +76,7 @@ class Router
                     $this->backController->usersListAdmin();
                 }
                 elseif ($route === 'confirmDeleteUserAdmin'){
-                    $this->backController->confirmDeleteUserAdmin($this->request->getGet()->get('userId'));
+                    $this->confirmController->confirmDeleteUserAdmin($this->request->getGet()->get('userId'));
                 }
                 elseif ( $route === 'deleteUserAccountAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
@@ -74,49 +88,49 @@ class Router
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->articlesListAdmin();
+                    $this->articlesController->articlesListAdmin();
                 }
                 elseif ($route === 'editArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
+                    $this->articlesController->editArticleAdmin($this->request->getPost(),$this->request->getGet()->get('articleId'));
                 }
                 elseif ( $route === 'deleteArticleAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->deleteArticleAdmin($this->request->getGet()->get('articleId'));
+                    $this->articlesController->deleteArticleAdmin($this->request->getGet()->get('articleId'));
                 }
                 elseif ($route === 'legalPage'){
                     $this->frontController->legalPage();
                 }
                 elseif ($route === 'confirmDeleteArticle'){
-                    $this->backController->confirmDeleteArticle($this->request->getGet()->get('articleId'));
+                    $this->confirmController->confirmDeleteArticle($this->request->getGet()->get('articleId'));
                 }
                 elseif ($route === 'confirmDeleteComment'){
-                    $this->backController->confirmDeleteComment($this->request->getGet()->get('commentId'));
+                    $this->confirmController->confirmDeleteComment($this->request->getGet()->get('commentId'));
                 }
                 elseif ($route === 'deleteCommentAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->deleteCommentAdmin($this->request->getGet()->get('commentId'));
+                    $this->commentsController->deleteCommentAdmin($this->request->getGet()->get('commentId'));
                 }
                 elseif ($route === 'articlesList'){
-                    $this->frontController->articlesList();
+                    $this->articlesController->articlesList();
                 }
                 elseif ($route === 'articlesByCat'){
-                    $this->frontController->articlesByCat($this->request->getGet()->get('id_category'));
+                    $this->articlesController->articlesByCat($this->request->getGet()->get('id_category'));
                 }
                 elseif($route === 'register'){
-                    $this->frontController->register($this->request->getPost());
+                    $this->connectController->register($this->request->getPost());
                 }
                 elseif($route === 'login'){
-                    $this->frontController->login($this->request->getPost());
+                    $this->connectController->login($this->request->getPost());
                 }
                 elseif($route === 'logout'){
-                    $this->frontController->logout();
+                    $this->connectController->logout();
                 }
                 elseif($route === 'profile'){
                     $this->backController->profile($this->request->getGet()->get('userId'));
@@ -140,37 +154,37 @@ class Router
                     $this->backController->deleteUserAccount();
                 }
                 elseif($route === 'confirmDeleteAccount'){
-                    $this->backController->confirmDeleteAccount();
+                    $this->confirmController->confirmDeleteAccount();
                 }
                 elseif($route === 'administration'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->administration();
+                    $this->homeController->administration();
                 }
                 elseif ($route === 'addMessage'){
-                    $this->backController->addMessage($this->request->getPost());
+                    $this->frontController->addMessage($this->request->getPost());
                 }
                 elseif  ($route === 'messagesListAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->messagesListAdmin();
+                    $this->frontController->messagesListAdmin();
                     }
                 elseif  ($route === 'messageAdmin'){
                     if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                         return $this->view->render('login');
                     }
-                    $this->backController->messageAdmin($this->request->getGet()->get('messageId'));
+                    $this->frontController->messageAdmin($this->request->getGet()->get('messageId'));
                     }
                     elseif($route === 'confirmDeleteMessage'){
-                        $this->backController->confirmDeleteMessageAdmin($this->request->getGet()->get('messageId'));
+                        $this->confirmController->confirmDeleteMessageAdmin($this->request->getGet()->get('messageId'));
                     }
                     elseif ( $route === 'deleteMessageAdmin'){
                         if (!$this->session->get('droits') || (!$this->session->get('droits', 1))){
                             return $this->view->render('login');
                         }
-                        $this->backController->deleteMessageAdmin($this->request->getGet()->get('messageId'));
+                        $this->frontController->deleteMessageAdmin($this->request->getGet()->get('messageId'));
                     }
                 else{
                     $this->errorController->errorNotFound();

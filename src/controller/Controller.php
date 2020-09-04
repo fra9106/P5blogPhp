@@ -9,6 +9,7 @@ use App\src\model\View;
 use App\src\constraint\Validation;
 use App\src\DAO\ContactHomeDAO;
 use App\src\DAO\UserssDAO;
+use App\src\DAO\ConnectDAO;
 
 abstract class Controller
 {
@@ -23,6 +24,7 @@ abstract class Controller
     protected $userssDAO;
     protected $messageHomeDAO;
     protected $files;
+    protected $connectDAO;
     
    
 
@@ -30,6 +32,7 @@ abstract class Controller
     {
         $this->articleDAO = new ArticleDAO();
         $this->commentDAO = new CommentDAO();
+        $this->connectDAO = new ConnectDAO();
         $this->view = new View();
         $this->request = new Request();
         $this->get = $this->request->getGet();

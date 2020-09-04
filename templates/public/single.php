@@ -13,7 +13,7 @@
                     <strong>Chapô :</strong><br><br>
                     <p class="card-text"><?= htmlspecialchars($article->getMiniContent());?></p>
                     <strong>Contenu : </strong><br><br>
-                    <p class="card-text"><?= htmlspecialchars($article->getContent());?></p></p>
+                    <p class="card-text"><?= $article->getContent();?></p></p>
                     <small class="text-muted"><em><?= htmlspecialchars($article->getPseudo());?></em></small><br>
                     <small class="text-muted"><em>Crée le : <?= htmlspecialchars($article->getCreationDate());?></em></small><br>
                     <?php if ($article->getUpdateDate()) :?>
