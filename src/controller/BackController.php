@@ -6,11 +6,22 @@ use App\config\Parameter;
 
 class BackController extends Controller
 {
+    /**
+     * display admin page
+     *
+     * @return void
+     */
     public function administration()
     {
     return $this->view->render('administration');
     }
 
+    /**
+     * add article admin
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function addArticle(Parameter $post)
     {
         if($post->get('submit')) {
@@ -28,6 +39,11 @@ class BackController extends Controller
         return $this->view->render('add_article');
     }
 
+    /**
+     * list admin articles page
+     *
+     * @return void
+     */
     public function articlesListAdmin(){
         $articles = $this->articleDAO->getArticles();
         return $this->view->render('articlesListAdmin', [
@@ -36,6 +52,13 @@ class BackController extends Controller
         
     }
 
+    /**
+     * edit article admin
+     *
+     * @param Parameter $post
+     * @param [type] $articleId
+     * @return void
+     */
     public function editArticleAdmin(Parameter $post, $articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
@@ -52,6 +75,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * confirm delete article page (admin)
+     *
+     * @param [type] $articleId
+     * @return void
+     */
     public function confirmDeleteArticle($articleId)
     {
         $article = $this->articleDAO->getArticle($articleId);
@@ -60,6 +89,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * delete article (admin)
+     *
+     * @param [type] $articleId
+     * @return void
+     */
     public function deleteArticleAdmin($articleId)
     {
         $this->articleDAO->deleteArticle($articleId);
@@ -70,6 +105,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * valid comment (admin)
+     *
+     * @param [type] $commentId
+     * @return void
+     */
     public function validComment($commentId)
     {
         $this->commentDAO->validComment($commentId);
@@ -80,6 +121,11 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * list admin comments page
+     *
+     * @return void
+     */
     public function commentsListAdmin(){
         $comments = $this->commentDAO->getComments();
         return $this->view->render('commentsListAdmin', [
@@ -87,6 +133,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * confirm delete comment page (admin)
+     *
+     * @param [type] $commentId
+     * @return void
+     */
     public function confirmDeleteComment($commentId)
     {
         $comment = $this->commentDAO->getComment($commentId);
@@ -96,6 +148,12 @@ class BackController extends Controller
         
     }
 
+    /**
+     * delete comment (admin)
+     *
+     * @param [type] $commentId
+     * @return void
+     */
     public function deleteCommentAdmin($commentId)
     {
         $this->commentDAO->deleteComment($commentId);
@@ -106,6 +164,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * display profile users page
+     *
+     * @param [type] $userId
+     * @return void
+     */
     public function profile($userId)
     {  
         $userId=$this->session->get('id');
@@ -115,6 +179,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * update pseudo user
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function updatePseudo(Parameter $post)
     {
         if($post->get('submit')) {
@@ -132,6 +202,12 @@ class BackController extends Controller
     
     }
 
+    /**
+     * update mail user
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function updateMail(Parameter $post)
     {
         if($post->get('submit')) {
@@ -151,6 +227,12 @@ class BackController extends Controller
         return $this->view->render('editProfile');
     }
 
+    /**
+     * update password user
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function updatePass(Parameter $post)
     {
         if($post->get('submit')) {
@@ -167,12 +249,22 @@ class BackController extends Controller
         return $this->view->render('editProfile');
     }
 
+    /**
+     * display profile user
+     *
+     * @return void
+     */
     public function editProfile()
     {  
         $this->session->get('id');
         return $this->view->render('editProfile');
     }
 
+    /**
+     * delete account user
+     *
+     * @return void
+     */
     public function deleteUserAccount()
     {
         $this->userssDAO->deleteUserAccount($this->session->get('pseudo'));
@@ -180,11 +272,21 @@ class BackController extends Controller
         return $this->view->render('home');
     }
 
+    /**
+     * confirm delete  user account page
+     *
+     * @return void
+     */
     public function confirmDeleteAccount()
     {
         return $this->view->render('deleteAccountConfirm');
     }
 
+    /**
+     * list admin users page
+     *
+     * @return void
+     */
     public function usersListAdmin()
     {
         $users = $this->userssDAO->usersListAdmin();
@@ -193,6 +295,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * confirm delete user (admin)
+     *
+     * @param [type] $userId
+     * @return void
+     */
     public function confirmDeleteUserAdmin($userId)
     {
         $user = $this->userssDAO->confirmDeleteUserAdmin($userId);
@@ -201,6 +309,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * delete user (admin)
+     *
+     * @param [type] $userId
+     * @return void
+     */
     public function deleteUserAccountAdmin($userId)
     {
         $this->userssDAO->deleteUserAccountAdmin($userId);
@@ -211,6 +325,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * add message home page
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function addMessage(Parameter $post)
     {
         if($post->get('submit') && $this->session->get('id')) {
@@ -222,6 +342,11 @@ class BackController extends Controller
         return $this->view->render('home');
     }
 
+    /**
+     * list home page messages admin
+     *
+     * @return void
+     */
     public function messagesListAdmin()
     {
         $messages = $this->messageHomeDAO->messagesListAdmin();
@@ -230,6 +355,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * display home page message by id
+     *
+     * @param [type] $messageId
+     * @return void
+     */
     public function messageAdmin($messageId)
     {
         $message = $this->messageHomeDAO->messageAdmin($messageId);
@@ -238,6 +369,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * confirm delete home page message (admin)
+     *
+     * @param [type] $messageId
+     * @return void
+     */
     public function confirmDeleteMessageAdmin($messageId)
     {
         $message = $this->messageHomeDAO->messageAdmin($messageId);
@@ -246,6 +383,12 @@ class BackController extends Controller
         ]);
     }
 
+    /**
+     * delete home page message
+     *
+     * @param [type] $messageId
+     * @return void
+     */
     public function deleteMessageAdmin($messageId)
     {
         $this->messageHomeDAO->deleteMessageAdmin($messageId);
@@ -274,28 +417,32 @@ class BackController extends Controller
                     'gif',
                     'png'
                 );
-                if ($this->files->getGet('avatar', 'size') <= $tailleMax){
-                    $extensionUpload = strtolower(substr(strrchr($this->files->getGet('avatar', 'name'), '.') , 1));
-                    if (in_array($extensionUpload, $extensionsValides)){
-                        $chemin = "../public/img/users/avatar/" . $this->session->get('id') . "." . $extensionUpload;
-                        $resultat = move_uploaded_file($this->files->getGet('avatar', 'tmp_name'), $chemin);
-                        if ($resultat){
-                            $newavatar = $this->session->get('id')  . "." . $extensionUpload;
-                            $sessId = $this->session->get('id');
-                            $this->userssDAO->getNewAvatar($newavatar, $sessId);
-                            $this->session->set('update_pseudo', 'Le changement de votre photo à bien été pris en compte !');
-                            return $this->view->render('editProfile', [
-                                'post' => $post
-                            ]);
-                        }else{
-                        $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );}
+                    if ($this->files->getGet('avatar', 'size') <= $tailleMax){
+                        $extensionUpload = strtolower(substr(strrchr($this->files->getGet('avatar', 'name'), '.') , 1));
+                        if (in_array($extensionUpload, $extensionsValides)){
+                            $chemin = "../public/img/users/avatar/" . $this->session->get('id') . "." . $extensionUpload;
+                            $resultat = move_uploaded_file($this->files->getGet('avatar', 'tmp_name'), $chemin);
+                            if ($resultat){
+                                $newavatar = $this->session->get('id')  . "." . $extensionUpload;
+                                $sessId = $this->session->get('id');
+                                $this->userssDAO->getNewAvatar($newavatar, $sessId);
+                                $this->session->set('update_pseudo', 'Le changement de votre photo à bien été pris en compte !');
+                                return $this->view->render('editProfile', [
+                                    'post' => $post
+                                ]);
+                            }else{
+                            $this->session->set('update_picture', 'Erreur durant l\'importation de votre photo de profil !' );
+                        }
                     }else{
-                      $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');}
-                    }else{
-                    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');}
+                        $this->session->set('update_picture', 'Votre photo de profil doit être au format jpg, jpeg, gif ou png !');
+                    }
                 }else{
-                $this->session->set('update_picture', 'Merci de selectionner une photo !');}
+                    $this->session->set('update_picture', 'Votre photo de profil ne doit pas dépasser 2Mo !');
+                }
+            }else{
+                $this->session->set('update_picture', 'Merci de selectionner une photo !');
             }
-            return $this->view->render('editProfile');
         }
+        return $this->view->render('editProfile');
+    }   
 }

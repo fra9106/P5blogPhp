@@ -13,6 +13,12 @@ class UserValidation extends Validation
         $this->constraint = new Constraint();
     }
 
+    /**check method (recover Parameter data, by all method)
+     * 
+     *
+     * @param Parameter $post
+     * @return void
+     */
     public function check(Parameter $post)
     {
         foreach ($post->all() as $key => $value) {
@@ -21,6 +27,13 @@ class UserValidation extends Validation
         return $this->errors;
     }
 
+    /**
+     *  check register fields method
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkField($name, $value)
     {
         if($name === 'pseudo') {
@@ -46,6 +59,13 @@ class UserValidation extends Validation
         
     }
 
+    /**
+     * error method
+     *
+     * @param [type] $name
+     * @param [type] $error
+     * @return void
+     */
     private function addError($name, $error) {
         if($error) {
             $this->errors += [
@@ -54,6 +74,13 @@ class UserValidation extends Validation
         }
     }
 
+    /**
+     * check pseudo field
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkPseudo($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
@@ -67,6 +94,13 @@ class UserValidation extends Validation
         }
     }
 
+    /**
+     * check password field
+     *
+     * @param [type] $name
+     * @param [type] $value
+     * @return void
+     */
     private function checkPassword($name, $value)
     {
         if($this->constraint->notBlank($name, $value)) {
